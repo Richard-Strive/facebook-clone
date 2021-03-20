@@ -1,14 +1,17 @@
-import React from "react";
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import "./Login.css";
 import Webcam from "react-webcam";
 
 function Login() {
+  const [loader, setLoader] = useState(false);
   const WebCamRef = useRef(null);
 
+  // Need to shift this in a tool.js
   const verify = async () => {
     try {
       const picture = WebCamRef.current.getScreenshot();
       console.log(picture);
+      setLoader(true);
 
       const response = await fetch("https://api.kairos.com/verify", {
         method: "POST",
@@ -24,6 +27,7 @@ function Login() {
       });
       if (response.ok) {
         console.log(await response.json());
+        setLoader(false);
       }
     } catch (err) {
       console.log("there is an error", err);
@@ -41,6 +45,8 @@ function Login() {
           textAlign: "centr",
           width: 640,
           height: 480,
+          border: `3px solid ${loader ? "orange" : "green"}`,
+          borderRadius: "20px",
         }}
       />
       <div>
