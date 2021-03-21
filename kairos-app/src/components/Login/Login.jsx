@@ -39,21 +39,23 @@ function Login({ user, setUserData }) {
         }),
       });
       if (response.ok) {
-        // console.log(await response.json());
-        setUserData(await response.json());
+        const data = await response.json();
+        setUserData(data);
 
         setLoader(false);
+        console.log(data);
 
-        if (user.userID.images[0].transaction.status == "success") {
+        if (data.images[0].transaction.status == "success") {
+          // window.location.pathname = "/main";
           history.push("/main");
-        } else {
-          alert("You are not Richard");
         }
       }
     } catch (err) {
       console.log("there is an error", err);
     }
   };
+
+  useEffect(() => {}, [user]);
 
   return (
     <div className="login_container">
