@@ -1,16 +1,29 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
 import "./Login.css";
+import { connect } from "react-redux";
 import Webcam from "react-webcam";
 
-function Login() {
+const mapStateToProps = (state) => state;
+
+const mapDispatchToProps = (dispacth) => ({
+  setUserData: (data) => dispacth({ type: "RECUGNIZE_USER", payload: data }),
+});
+
+function Login({ user, setUserData }) {
   const [loader, setLoader] = useState(false);
   const WebCamRef = useRef(null);
+
+  const history = useHistory();
+
+  // console.log("state--->", user.userID.images[0].transaction.status);
+  console.log(window.location.pathname);
 
   // Need to shift this in a tool.js
   const verify = async () => {
     try {
       const picture = WebCamRef.current.getScreenshot();
-      console.log(picture);
+      // console.log(picture);
       setLoader(true);
 
       const response = await fetch("https://api.kairos.com/verify", {
@@ -26,8 +39,16 @@ function Login() {
         }),
       });
       if (response.ok) {
-        console.log(await response.json());
+        // console.log(await response.json());
+        setUserData(await response.json());
+
         setLoader(false);
+
+        if (user.userID.images[0].transaction.status == "success") {
+          history.push("/main");
+        } else {
+          alert("You are not Richard");
+        }
       }
     } catch (err) {
       console.log("there is an error", err);
@@ -56,4 +77,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
