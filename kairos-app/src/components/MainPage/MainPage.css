@@ -6,22 +6,22 @@
 .side_bar_left {
   height: 100%;
   width: 100px;
-  background-color: #f0f2f5;
+
   overflow: scroll;
 }
 
 .side_bar_right {
   height: 100%;
   width: 100px;
-  background-color: #f0f2f5;
   overflow: scroll;
 }
 
 .main_content_container {
   height: 100%;
   display: flex;
+  overflow: scroll;
   justify-content: center;
-  background-color: yellow;
+  background-color: #f0f2f5;
 }
 .content_header {
   width: 100%;
@@ -34,13 +34,10 @@
 .content {
   height: 100%;
   width: 90%;
-  background-color: blue;
 }
 
 .content_body {
-  background-color: violet;
-  height: 90%;
-  /* Need to fix this with wrap the single post "height: wrap" */
+  height: wrap;
   width: 100%;
   display: flex;
   justify-content: center;

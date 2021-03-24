@@ -51,12 +51,17 @@
 }
 
 .displayed_post_comment_list {
-  height: 80px;
+  height: wrap;
+  width: 100%;
+}
+
+.signle_comment {
+  height: 70px;
   width: 100%;
   display: flex;
-  background-color: yellow;
 }
-.displayed_post_comment_list > img {
+
+.signle_comment > img {
   border-radius: 50%;
   height: 30px;
   width: 30px;
@@ -68,7 +73,6 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background-color: lime;
 }
 
 .displayed_post_footer > img {
@@ -81,7 +85,7 @@
 .comment_input {
   width: 92%;
   height: 30px;
-  background-color: tomato;
+  background-color: #f0f2f5;
   border-radius: 30px;
   display: flex;
   align-items: center;

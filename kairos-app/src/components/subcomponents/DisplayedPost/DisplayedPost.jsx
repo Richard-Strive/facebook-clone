@@ -31,10 +31,12 @@ function DisplayedPost() {
       </div>
       <hr className="m-0" />
       <div className="displayed_post_comment_list">
-        <img src="https://source.unsplash.com/random" alt="post_image" />
-        <div className="ml-2">
-          <b>Username</b>
-          <p>Comment</p>
+        <div className="signle_comment">
+          <img src="https://source.unsplash.com/random" alt="post_image" />
+          <div className="ml-2">
+            <b>Username</b>
+            <p>Comment</p>
+          </div>
         </div>
       </div>
       <div className="displayed_post_footer">
