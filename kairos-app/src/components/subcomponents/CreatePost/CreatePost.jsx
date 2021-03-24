@@ -8,7 +8,7 @@ import "./CreatePost.css";
 function CreatePost() {
   return (
     <div className="create_post_container">
-      <div className="create_post_header">
+      <div className="create_post_header pt-2">
         <img src="https://source.unsplash.com/random" alt="profile_pic" />
         <div className="create_post_input">
           <input type="text" placeholder="What's on your mind, User?" />
