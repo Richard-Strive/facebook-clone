@@ -7,42 +7,40 @@
 
 .create_post_header {
   display: flex;
+  justify-content: space-around;
 }
 
-.create_post_profile_pic {
-  overflow: hidden;
-  height: 40px;
-  width: 40px;
-  border-radius: 30px;
-}
-
-.create_post_profile_pic > img {
-  height: 40px;
-  width: 40px;
-  object-fit: cover;
+.create_post_header > img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
 }
 
 .create_post_input {
-  background-color: darkblue;
-  height: 40px;
-  width: 100%;
-  margin-left: 10px;
-  overflow: hidden;
-  border-radius: 25px;
+  width: 80%;
+  height: 50px;
+  background-color: tomato;
+  border-radius: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-}
-.create_post_input > input {
-  width: 380px;
-  outline-style: none;
-  border: none;
 }
 
-.create_post_bnts {
+.create_post_input > input {
+  width: 95%;
+  outline-style: none;
+  border: none;
+  background-color: transparent;
+}
+
+.create_post_icons {
   display: flex;
-  align-items: center;
-  justify-content: center;
   justify-content: space-around;
+}
+
+.live_icon,
+.photo_icon,
+.feeling_icon {
+  height: 40px;
+  width: 40px;
 }

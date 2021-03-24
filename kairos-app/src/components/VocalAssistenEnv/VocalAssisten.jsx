@@ -24,16 +24,18 @@ class ArtyomCommandsManager {
         },
       },
       {
-        indexes: ["Who is Manuel ?"],
+        indexes: ["Ricardo"],
         action: () => {
-          Artyom.say("Probably the best designer ever.");
+          Artyom.say(
+            "Probably the best Professor ever. He saved your ass! Any other stupid question?"
+          );
         },
       },
       {
-        indexes: ["I love you ?"],
+        indexes: ["aler"],
         action: () => {
-          Artyom.say("Fucking gay. Watch some lesbo video on pornhub");
-          alert("FATTI NA SEGA CON DEI PORNO CON DELLE FIGHE RUSSE");
+          Artyom.say("You are showing off dude. Find a real job. Fuck you!");
+          alert("HERE IT'S YOUR FUCKING ALERT");
         },
       },
       {

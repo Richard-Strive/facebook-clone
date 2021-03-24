@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import LeftSideBar from "../subcomponents/LeftSideBar/LeftSideBar";
 import RightSideBar from "../subcomponents/RightSideBar/RightSideBar";
 import CreatePost from "../subcomponents/CreatePost/CreatePost";
+import DisplayedPost from "../subcomponents/DisplayedPost/DisplayedPost";
 import "./MainPage.css";
 
 function MainPage() {
@@ -16,7 +17,9 @@ function MainPage() {
           <div className="content_header">
             <CreatePost />
           </div>
-          <div className="content_body"></div>
+          <div className="content_body">
+            <DisplayedPost />
+          </div>
         </div>
       </Col>
       <Col className="side_bar_right d-none d-sm-none d-md-block">

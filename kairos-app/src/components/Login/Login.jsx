@@ -47,7 +47,7 @@ function Login({ user, setUserData }) {
 
         if (data.images[0].transaction.status == "success") {
           // window.location.pathname = "/main";
-          history.push("/main");
+          history.push("/vocal");
         }
       }
     } catch (err) {

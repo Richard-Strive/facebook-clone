@@ -8,11 +8,11 @@
   overflow: hidden;
   height: 120px;
   width: 120px;
-  border-radius: 20px;
 }
 .sponsor_image > img {
   height: 120px;
   width: 120px;
+  border-radius: 10%;
   object-fit: cover;
 }
 

@@ -9,27 +9,26 @@ function CreatePost() {
   return (
     <div className="create_post_container">
       <div className="create_post_header">
-        <div className="create_post_profile_pic">
-          <img src="https://source.unsplash.com/random" alt="profile_pic" />
-        </div>
+        <img src="https://source.unsplash.com/random" alt="profile_pic" />
         <div className="create_post_input">
           <input type="text" placeholder="What's on your mind, User?" />
         </div>
       </div>
-
-      <div className="create_post_bnts">
-        <div className="live_video_btn">
-          <RiLiveFill className="icon" />
-        </div>
-        <div className="photo_video_btn">
-          <IoMdPhotos className="icon" />
-        </div>
-        <div className="feeling_activity_btn">
-          <CgSmileMouthOpen className="icon" />
-        </div>
-        <div></div>
-      </div>
       <hr />
+      <div className="create_post_icons">
+        <div className="live_icon_container">
+          <RiLiveFill className="live_icon" />
+          <span>Live Video</span>
+        </div>
+        <div className="photo_icon_container">
+          <IoMdPhotos className="photo_icon" />
+          <span>Photo</span>
+        </div>
+        <div className="feeling_icon_container">
+          <CgSmileMouthOpen className="feeling_icon" />
+          <span>Feeling</span>
+        </div>
+      </div>
     </div>
   );
 }

@@ -36,3 +36,12 @@
   width: 90%;
   background-color: blue;
 }
+
+.content_body {
+  background-color: violet;
+  height: 90%;
+  /* Need to fix this with wrap the single post "height: wrap" */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

@@ -1,8 +1,6 @@
 .profile_pic_icon {
-  overflow: hidden;
   height: 40px;
   width: 40px;
-  border-radius: 30px;
 }
 
 .icon {
@@ -13,6 +11,7 @@
 .profile_pic_icon > img {
   height: 40px;
   width: 40px;
+  border-radius: 50%;
   object-fit: cover;
 }
 

@@ -49,7 +49,7 @@ function RightSideBar() {
         </p>
       </div>
       <div className="right pl-2">
-        <div className="profile_pic_icon ">
+        <div className="profile_pic_icon">
           <img src="https://source.unsplash.com/random" alt="profile_pic" />
         </div>
         <p className="ml-2 mt-3">
