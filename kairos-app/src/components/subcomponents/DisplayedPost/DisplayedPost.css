@@ -62,3 +62,35 @@
   width: 30px;
   object-fit: cover;
 }
+
+.displayed_post_footer {
+  height: 45px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: lime;
+}
+
+.displayed_post_footer > img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.comment_input {
+  width: 92%;
+  height: 30px;
+  background-color: tomato;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment_input > input {
+  width: 95%;
+  outline-style: none;
+  border: none;
+  background-color: transparent;
+}

@@ -37,6 +37,12 @@ function DisplayedPost() {
           <p>Comment</p>
         </div>
       </div>
+      <div className="displayed_post_footer">
+        <img src="https://source.unsplash.com/random" alt="post_image" />
+        <div className="comment_input">
+          <input type="text" placeholder="Write a comment..." />
+        </div>
+      </div>
     </div>
   );
 }
