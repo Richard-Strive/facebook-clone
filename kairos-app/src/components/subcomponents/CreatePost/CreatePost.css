@@ -1,0 +1,48 @@
+.create_post_container {
+  background-color: white;
+  border-radius: 10px;
+  height: 120px;
+  width: 80%;
+}
+
+.create_post_header {
+  display: flex;
+}
+
+.create_post_profile_pic {
+  overflow: hidden;
+  height: 40px;
+  width: 40px;
+  border-radius: 30px;
+}
+
+.create_post_profile_pic > img {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+}
+
+.create_post_input {
+  background-color: darkblue;
+  height: 40px;
+  width: 100%;
+  margin-left: 10px;
+  overflow: hidden;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.create_post_input > input {
+  width: 380px;
+  outline-style: none;
+  border: none;
+}
+
+.create_post_bnts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
+}

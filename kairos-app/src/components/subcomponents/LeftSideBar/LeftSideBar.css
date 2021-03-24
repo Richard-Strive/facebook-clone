@@ -1,0 +1,23 @@
+.profile_pic_icon {
+  overflow: hidden;
+  height: 40px;
+  width: 40px;
+  border-radius: 30px;
+}
+
+.icon {
+  height: 40px;
+  width: 40px;
+}
+
+.profile_pic_icon > img {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
