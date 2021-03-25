@@ -1,11 +1,12 @@
 .profile_page_container {
-  height: 190vh;
+  height: 100vh;
   width: 100vw;
-  background-color: lightseagreen;
+  background-color: white;
 }
+/* NEED TO ADJUST HEIGHT*/
 
 .profile_page_header {
-  height: 45%;
+  height: 50%;
   width: 100%;
   /* background-color: indigo; */
   background: linear-gradient(
@@ -30,7 +31,7 @@
 
 .profile_page_background_img {
   width: 75%;
-  height: 67%;
+  height: 70%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   position: relative;
@@ -88,11 +89,57 @@
 .profile_page_header_bottom {
   width: 70%;
   height: 90%;
-  background-color: teal;
+
+  display: flex;
+  justify-content: space-between;
 }
 
 .profile_page_header_bottom_tabs {
   width: 50%;
   height: 100%;
-  background-color: tomato;
+  display: flex;
 }
+.profile_page_header_bottom_tabs .profile_page_header_bottom_more_dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.profile_page_header_bottom_left {
+  height: 100%;
+  width: 35%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile_page_header_bottom_left .profile_page_pen_icon {
+  height: 14px;
+  width: 14px;
+}
+
+.profile_page_header_bottom_left > .background_image_edit_icon {
+  position: static;
+  height: 35px;
+}
+
+.profile_eye_icon,
+.profile_search_icon,
+.profile_dots_icon {
+  height: 35px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9px;
+  background-color: #dadbe1;
+}
+
+.profile_component_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  background-color: #dadbe1;
+}
+/* NEED TO ADJUST HEIGHT*/
