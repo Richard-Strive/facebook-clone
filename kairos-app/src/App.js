@@ -7,6 +7,7 @@ import Login from "./components/Login/Login";
 import MainPage from "./components/MainPage/MainPage";
 import Registraion from "./components/Registration/Registration";
 import VocalAssisten from "./components/VocalAssistenEnv/VocalAssisten";
+import ProfilePage from "./components/ProfilePage/ProfilePage";
 
 function App() {
   return (
@@ -24,6 +25,11 @@ function App() {
           render={(props) => <VocalAssisten {...props} />}
         />
         <Route exact path="/login" render={(props) => <Login {...props} />} />
+        <Route
+          exact
+          path="/me"
+          render={(props) => <ProfilePage {...props} />}
+        />
       </Switch>
     </Router>
   );

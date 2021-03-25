@@ -19,6 +19,8 @@ function MainPage() {
           </div>
           <div className="content_body">
             <DisplayedPost />
+            <DisplayedPost />
+            <DisplayedPost />
           </div>
         </div>
       </Col>
