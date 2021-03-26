@@ -125,13 +125,13 @@ function MessengerPage() {
         </div>
 
         <div className="messsanger_current_chat_content">
-          <div className="single_message">
-            <img src="https://source.unsplash.com/random" alt="" />
+          <div className="single_message ml-1 mt-2">
+            <img src="https://source.unsplash.com/random" alt="user_photo" />
             <div className="single_message_text">
               <p>Hi i'm your friend</p>
             </div>
           </div>
-          <div className="single_message_me mt-2">
+          <div className="single_message_me mt-2 mr-2">
             <div className="single_message_text">
               <p>I'm the owner of the account</p>
             </div>
