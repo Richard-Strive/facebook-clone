@@ -56,6 +56,7 @@
   border-radius: 10px;
 }
 .navbar_friends_icon_container:hover {
+  cursor: pointer;
   height: 56px;
   width: 110px;
   margin-left: 8px;
@@ -64,6 +65,7 @@
 }
 
 .navbar_home_icon_container:hover {
+  cursor: pointer;
   height: 56px;
   width: 110px;
   margin-left: 8px;
@@ -71,6 +73,7 @@
   border-radius: 10px;
 }
 .navbar_video_icon_container:hover {
+  cursor: pointer;
   height: 56px;
   width: 110px;
   margin-left: 8px;
@@ -78,6 +81,7 @@
   border-radius: 10px;
 }
 .navbar_shop_icon_container:hover {
+  cursor: pointer;
   height: 56px;
   width: 110px;
   margin-left: 8px;
@@ -85,6 +89,7 @@
   border-radius: 10px;
 }
 .navbar_group_icon_container:hover {
+  cursor: pointer;
   height: 56px;
   width: 110px;
   margin-left: 8px;
