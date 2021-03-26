@@ -1,0 +1,60 @@
+.messenger_page_container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.messsanger_friend_list_container {
+  height: 100%;
+  width: 360px;
+  background-color: teal;
+}
+
+.messsanger_current_chat_container {
+  height: 100%;
+  width: 682px;
+  background-color: peru;
+}
+
+.messsanger_current_friend_info {
+  height: 100%;
+  width: 334px;
+  background-color: burlywood;
+}
+
+.messsanger_friend_list_container {
+  height: 120px;
+}
+
+.messsanger_friend_list_icons {
+  height: 45px;
+  background-color: darkblue;
+}
+.messsanger_friend_list_input {
+  height: 75px;
+  background-color: yellow;
+}
+
+.messsanger_friend_list {
+  height: 535px;
+  overflow: scroll;
+  background-color: silver;
+}
+
+.messsanger_friend_list_icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.messanger_dots_icon_container,
+.messanger_live_icon_container,
+.messanger_write_icon_container {
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: tomato;
+}

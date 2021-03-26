@@ -9,6 +9,7 @@ import Registraion from "./components/Registration/Registration";
 import VocalAssisten from "./components/VocalAssistenEnv/VocalAssisten";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import NavBar from "./components/NavBar/NavBar";
+import MessengerPage from "./components/MessengerPage/MessengerPage";
 
 function App() {
   return (
@@ -31,6 +32,11 @@ function App() {
           exact
           path="/me"
           render={(props) => <ProfilePage {...props} />}
+        />
+        <Route
+          exact
+          path="/messages"
+          render={(props) => <MessengerPage {...props} />}
         />
       </Switch>
     </Router>
