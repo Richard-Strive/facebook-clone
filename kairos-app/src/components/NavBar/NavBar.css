@@ -1,10 +1,10 @@
 .navbar_container {
-  height: 70px;
+  height: 56px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
-.navbar_search_input,
+
 .navbar_center_icons,
 .navbar_right_icons {
   width: 30%;
@@ -12,23 +12,110 @@
 }
 
 .navbar_search_input {
-  background-color: white;
+  width: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.navbar_center_icons {
-  background-color: chartreuse;
+.navbar_search_input > .navbar_search_facebook_icon {
+  height: 40px;
+  width: 39px;
+  color: #1089f0;
 }
 
-.navbar_right_icons {
-  background-color: slateblue;
+.navbar_center_icons {
+  width: 500px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navbar_friends_icon,
+.navbar_home_icon,
+.navbar_video_icon,
+.navbar_shop_icon,
+.navbar_group_icon {
+  height: 28px;
+  width: 28px;
+}
+
+.navbar_friends_icon_container,
+.navbar_home_icon_container,
+.navbar_video_icon_container,
+.navbar_shop_icon_container,
+.navbar_group_icon_container {
+  background-color: teal;
+  height: 56px;
+  width: 110px;
+  margin-left: 8px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.navbar_friends_icon_container:hover {
+  height: 56px;
+  width: 110px;
+  margin-left: 8px;
+  background-color: #f0f2f5;
+  border-radius: 10px;
+}
+
+.navbar_home_icon_container:hover {
+  height: 56px;
+  width: 110px;
+  margin-left: 8px;
+  background-color: #f0f2f5;
+  border-radius: 10px;
+}
+.navbar_video_icon_container:hover {
+  height: 56px;
+  width: 110px;
+  margin-left: 8px;
+  background-color: #f0f2f5;
+  border-radius: 10px;
+}
+.navbar_shop_icon_container:hover {
+  height: 56px;
+  width: 110px;
+  margin-left: 8px;
+  background-color: #f0f2f5;
+  border-radius: 10px;
+}
+.navbar_group_icon_container:hover {
+  height: 56px;
+  width: 110px;
+  margin-left: 8px;
+  background-color: #f0f2f5;
+  border-radius: 10px;
+}
+
+.navbar_plus_icon_container,
+.navbar_message_icon_container,
+.navbar_notification_icon_container,
+.navbar_dropdown_icon_container {
+  height: 44px;
+  width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f2f5;
+  border-radius: 50%;
+}
+
+.navbar_message_icon,
+.navbar_plus_icon,
+.navbar_notification_icon,
+.navbar_dropdown_icon {
+  height: 20px;
+  width: 20px;
 }
 
 .search_input {
   width: 80%;
-  height: 50px;
+  height: 40px;
   background-color: #f0f2f5;
   border-radius: 30px;
   display: flex;
@@ -41,4 +128,32 @@
   outline-style: none;
   border: none;
   background-color: transparent;
+}
+
+.navbar_right_icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.profile_redirect {
+  width: 95px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+
+  font-size: small;
+  background-color: #dce8f3;
+  color: #1089f0;
+}
+.profile_redirect > p {
+  margin-bottom: 0;
+}
+
+.profile_redirect > img {
+  height: 28px;
+  width: 29px;
+  border-radius: 50%;
+  object-fit: cover;
 }

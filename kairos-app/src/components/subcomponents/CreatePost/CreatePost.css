@@ -3,22 +3,24 @@
   border-radius: 10px;
   height: 140px;
   width: 80%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .create_post_header {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .create_post_header > img {
-  height: 50px;
-  width: 50px;
+  height: 36px;
+  width: 36px;
   border-radius: 50%;
 }
 
 .create_post_input {
   width: 80%;
-  height: 50px;
+  height: 40px;
   background-color: #f0f2f5;
   border-radius: 30px;
   display: flex;
@@ -41,6 +43,15 @@
 .live_icon,
 .photo_icon,
 .feeling_icon {
-  height: 40px;
-  width: 40px;
+  height: 24px;
+  width: 24px;
+}
+.feeling_icon {
+  color: #ecb83c;
+}
+.photo_icon {
+  color: #42b55f;
+}
+.live_icon {
+  color: #e52746;
 }

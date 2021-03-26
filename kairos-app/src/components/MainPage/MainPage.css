@@ -30,6 +30,10 @@
   align-items: center;
   justify-content: center;
 }
+.content_header > .create_post_container {
+  margin-top: 20px;
+  height: 120px;
+}
 
 .content {
   height: 100%;
@@ -43,3 +47,6 @@
   align-items: center;
   flex-direction: column;
 }
+/* .content_body > .displayed_post_container {
+  margin-top: 20px;
+} */
