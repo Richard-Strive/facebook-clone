@@ -17,7 +17,7 @@ function NavBar() {
   return (
     <div className="navbar_container">
       <div className="navbar_search_input">
-        <FaFacebook className="navbar_search_facebook_icon" />
+        <FaFacebook className="navbar_search_facebook_icon mr-2" />
         <div className="search_input ml-2">
           <input type="text" placeholder="Search Facebook" />
         </div>
