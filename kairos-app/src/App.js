@@ -8,10 +8,12 @@ import MainPage from "./components/MainPage/MainPage";
 import Registraion from "./components/Registration/Registration";
 import VocalAssisten from "./components/VocalAssistenEnv/VocalAssisten";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
   return (
     <Router>
+      <NavBar />
       <Switch>
         <Route
           exact
