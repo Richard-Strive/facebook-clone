@@ -7,44 +7,62 @@
 .messsanger_friend_list_container {
   height: 100%;
   width: 360px;
-  background-color: teal;
 }
 
 .messsanger_current_chat_container {
   height: 100%;
   width: 682px;
-  background-color: peru;
 }
 
 .messsanger_current_friend_info {
   height: 100%;
   width: 334px;
-  background-color: burlywood;
+}
+.messsanger_current_friend_info_container {
+  border-left: 1px solid #e4e6eb;
 }
 
 .messsanger_friend_list_container {
   height: 120px;
 }
 
-.messsanger_friend_list_icons {
-  height: 45px;
-  background-color: darkblue;
-}
-.messsanger_friend_list_input {
-  height: 75px;
-  background-color: yellow;
-}
+.messsanger_friend_list_top {
+  height: 76px;
 
-.messsanger_friend_list {
-  height: 535px;
-  overflow: scroll;
-  background-color: silver;
-}
-
-.messsanger_friend_list_icons {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.messsanger_friend_list_input_container {
+  height: 75px;
+  border-right: 1px solid #e4e6eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.messsanger_friend_list_input {
+  width: 328px;
+  height: 36px;
+  background-color: #f0f2f5;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.messsanger_friend_list_input > input {
+  width: 95%;
+  outline-style: none;
+  border: none;
+  background-color: transparent;
+}
+
+.messsanger_friend_list {
+  height: 506px;
+  overflow: scroll;
+  border-right: 1px solid #e4e6eb;
 }
 
 .messanger_dots_icon_container,
@@ -56,5 +74,153 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: tomato;
+  background-color: #e4e6eb;
+}
+
+.messsanger_search_icon {
+  height: 17px;
+  width: 16px;
+}
+.messanger_single_friend {
+  width: 344px;
+  height: 72px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+}
+.messanger_single_friend:hover {
+  background-color: #e4e6eb;
+}
+.messanger_single_friend > img {
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.messsanger_current_chat_top {
+  width: 683px;
+  height: 76px;
+
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.messsanger_current_chat_top > img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 12px;
+}
+
+.messsanger_current_chat_content {
+  width: 684px;
+  height: 528px;
+
+  overflow: scroll;
+}
+
+.messsanger_current_chat_input {
+  height: 53px;
+  width: 684px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.messsanger_current_chat_input > .messsanger_friend_list_input {
+  width: 442px;
+}
+
+.single_message {
+  width: 400px;
+  height: wrap;
+
+  display: flex;
+}
+
+.single_message > img {
+  margin-top: 10px;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+}
+
+.single_message > .single_message_text {
+  width: wrap;
+  height: wrap;
+  background-color: #e4e6eb;
+  border-radius: 10px;
+  margin-left: 5px;
+}
+
+.single_message_me {
+  width: wrap;
+  height: wrap;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+.single_message_me img {
+  margin-top: 10px;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+}
+
+.single_message_me > .single_message_text {
+  width: wrap;
+  height: wrap;
+  background-color: #0084ff;
+  border-radius: 10px;
+  margin-right: 5px;
+}
+
+.current_chat_input_plus_icon,
+.current_chat_input_photo_icon,
+.current_chat_input_sticker_icon,
+.current_chat_input_git_icon,
+.current_chat_input_smile_icon,
+.current_chat_input_like_icon {
+  height: 20px;
+  width: 20px;
+  color: #0084ff;
+}
+
+.messsanger_current_friend_info {
+  height: 130px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.messsanger_current_friend_info > img {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.customise_chat {
+  display: flex;
+  justify-content: space-between;
+}
+.privacy_support {
+  display: flex;
+  justify-content: space-between;
+}
+
+.customise_chat:hover,
+.privacy_support:hover {
+  background-color: #e4e6eb;
+  border-radius: 10px;
+}
+
+.customise_chat > .customise_chat_dropdown_icon,
+.privacy_support > .customise_chat_dropdown_icon {
+  height: 20px;
+  width: 20px;
 }
