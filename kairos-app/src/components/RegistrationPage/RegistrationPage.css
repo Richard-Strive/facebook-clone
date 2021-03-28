@@ -1,0 +1,75 @@
+.registration_page_container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: #ebedf0;
+  font-family: "Freight Sans Bold", Helvetica, Arial, sans-serif;
+}
+
+.registration_page_header {
+  width: 100%;
+  height: 78px;
+  background-color: #3b5998;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.registration_page_facebook_logo > h2 {
+  font-size: 35px;
+  color: white;
+}
+
+.registration_page_login_btn > button {
+  border: none;
+  outline: none;
+  border: 1px solid black;
+  height: 24px;
+  width: wrap;
+  background-color: #4267b2;
+  color: white;
+}
+
+.registration_page_login_btn > button:hover {
+  background-color: #3b5998;
+}
+
+.registration_page_content_container {
+  height: 558px;
+  width: 400px;
+
+  padding-top: 50px;
+}
+
+.registration_page_content > h2 {
+  font-size: 35px;
+}
+.registration_page_content h4,
+.registration_page_content small {
+  color: #4d4b4b;
+}
+
+.sign_up_btn {
+  display: block;
+  width: 194px;
+  height: 39px;
+  border: 1px solid #2c5115;
+  box-shadow: inset 0 1px 1px #a4e388;
+  /* background-color: #69a74e; */
+  background: linear-gradient(#67ae55, #578843);
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.sign_up_btn:hover {
+  background: linear-gradient(#76b866, #578843);
+}
+
+/*
+Linear gradient  first parameter it's the top and the second it's the bottom
+*/

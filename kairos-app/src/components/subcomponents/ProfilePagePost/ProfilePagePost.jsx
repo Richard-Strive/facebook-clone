@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./ProfilePagePost.css";
 import { Row, Col } from "react-bootstrap";
 import CreatePost from "../CreatePost/CreatePost";
 import DisplayedPost from "../DisplayedPost/DisplayedPost";
+import Modal from "../Modal/Moda";
 
 function ProfilePagePost() {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="profile_page_post_container">
+      <Modal open={open} setOpen={setOpen} />
       <div className="profile_page_post_left mt-2">
         <div className="face_id_camera">
           <img
             src="https://specials-images.forbesimg.com/imageserve/5f76aa7a27e990f9cc618fe8/960x0.jpg?fit=scale"
             alt="arificial_intelligence"
+            onClick={() => setOpen(!open)}
           />
           <h5>Enable Face ID login</h5>
         </div>

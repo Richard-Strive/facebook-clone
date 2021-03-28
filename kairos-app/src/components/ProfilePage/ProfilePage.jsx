@@ -40,7 +40,7 @@ function ProfilePage(props) {
             alt="background_image"
           />
           <img
-            src="https://source.unsplash.com/random"
+            src="https://source.unsplash.com/1600x900/?face"
             alt="background_image"
           />
           <MdPhotoCamera className="profile_page_photo_icon" />
