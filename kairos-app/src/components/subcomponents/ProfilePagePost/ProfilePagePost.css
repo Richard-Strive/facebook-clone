@@ -8,6 +8,11 @@
 .profile_page_post_left {
   width: 48%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: -65px;
 }
 .profile_page_post_right {
   width: 60%;

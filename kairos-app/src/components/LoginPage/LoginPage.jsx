@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Modal from "../subcomponents/Modal/Modal";
 import { Form } from "react-bootstrap";
 import "./LoginPage.css";
 
 function LoginPage() {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="login_page_container">
+      <Modal open={open} setOpen={setOpen} />
       <div className="login_page_logo_container">
         <div className="login_page_logo">
           <h2>
@@ -34,8 +38,8 @@ function LoginPage() {
             </Form.Group>
           </Form>
           <button>Log In</button>
-          <button>
-            Log In with Face ID
+          <button onClick={() => setOpen(!open)}>
+            Log In With Face ID
             <span></span>
             <span></span>
             <span></span>

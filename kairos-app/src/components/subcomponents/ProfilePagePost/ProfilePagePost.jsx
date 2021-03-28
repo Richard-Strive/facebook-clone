@@ -3,7 +3,7 @@ import "./ProfilePagePost.css";
 import { Row, Col } from "react-bootstrap";
 import CreatePost from "../CreatePost/CreatePost";
 import DisplayedPost from "../DisplayedPost/DisplayedPost";
-import Modal from "../Modal/Moda";
+import Modal from "../Modal/Modal.jsx";
 
 function ProfilePagePost() {
   const [open, setOpen] = useState(false);
