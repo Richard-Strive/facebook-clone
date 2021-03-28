@@ -34,7 +34,14 @@ function LoginPage() {
             </Form.Group>
           </Form>
           <button>Log In</button>
-          <small className="mt-3">Forgotten password?</small>
+          <button>
+            Log In with Face ID
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
           <hr className="login_hr" />
           <button>Create New Account</button>
         </div>
