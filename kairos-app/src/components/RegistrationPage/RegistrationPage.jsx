@@ -31,7 +31,7 @@ function Registration() {
             </Form.Row>
 
             <Form.Group className="mt-2 mb-2">
-              <Form.Control placeholder="Mobile number or email address" />
+              <Form.Control placeholder="Email address" />
             </Form.Group>
             <Form.Group className="mt-2">
               <Form.Control placeholder="New password" />

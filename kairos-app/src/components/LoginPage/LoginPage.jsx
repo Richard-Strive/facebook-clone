@@ -25,7 +25,7 @@ function LoginPage() {
             <Form.Group>
               <Form.Control
                 type="email"
-                placeholder="Email address or phone number"
+                placeholder="Email address"
                 className="login_page_email_input"
               />
             </Form.Group>
