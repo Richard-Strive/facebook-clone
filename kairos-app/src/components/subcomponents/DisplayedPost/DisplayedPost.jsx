@@ -8,13 +8,13 @@ function DisplayedPost() {
   return (
     <div className="displayed_post_container p-2 mt-3">
       <div className="displayed_post_header mt-1">
-        <div className="displayed_post_user_info">
+        <div className="displayed_post_user_info ml-2">
           <img src="https://source.unsplash.com/random" alt="profile_pic" />
-          <b className="ml-2">Username</b>
+          <h6 className="ml-2 mt-2">Username</h6>
         </div>
         <HiDotsHorizontal className="mr-2 mt-3" />
       </div>
-      <h3>This is a simple comment</h3>
+      <p className="ml-2">This is a simple comment</p>
       <div className="displayed_post_content">
         <img src="https://source.unsplash.com/random" alt="post_image" />
       </div>
@@ -22,11 +22,11 @@ function DisplayedPost() {
       <div className="like_comment p-3">
         <div className="displayed_post_like_icon">
           <BiLike className="comment" />
-          Like
+          <h6>Like</h6>
         </div>
         <div className="displayed_post_comment_icon">
           <GoComment className="like" />
-          Comment
+          <h6>Comment</h6>
         </div>
       </div>
       <hr className="m-0" />

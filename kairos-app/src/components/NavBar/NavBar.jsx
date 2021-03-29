@@ -141,7 +141,7 @@ function NavBar() {
       <div className="navbar_right_icons">
         <div className="profile_redirect">
           <img src="https://source.unsplash.com/random" alt="" />
-          <p>Username</p>
+          <h6 className="mt-1">Username</h6>
         </div>
         <div className="navbar_plus_icon_container">
           <FiPlus className="navbar_plus_icon" />

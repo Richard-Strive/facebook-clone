@@ -2,8 +2,12 @@
   height: 56px;
   width: 100%;
   display: flex;
-
   justify-content: space-around;
+}
+.profile_redirect h6 {
+  font-weight: 600;
+  font-size: 15px;
+  color: black;
 }
 
 .navbar_center_icons,
@@ -143,7 +147,7 @@
 }
 
 .profile_redirect {
-  width: 95px;
+  width: wrap;
   height: 38px;
   display: flex;
   align-items: center;
@@ -153,6 +157,7 @@
   background-color: #dce8f3;
   color: #1089f0;
 }
+
 .profile_redirect > p {
   margin-bottom: 0;
 }

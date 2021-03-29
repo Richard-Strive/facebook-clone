@@ -21,7 +21,7 @@ function ProfilePagePost() {
           <h5>Enable Face ID login</h5>
         </div>
         <div className="friends_container mt-3 pt-3">
-          <b className="ml-3">Friends</b>
+          <h6 className="ml-3">Friends</h6>
           <div className="friends_container_row mt-4">
             <Row className="mt-3">
               <Col>
