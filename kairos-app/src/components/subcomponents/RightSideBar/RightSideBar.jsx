@@ -4,17 +4,17 @@ import "./RightSideBar.css";
 function RightSideBar() {
   return (
     <div className="right_container ml-1">
-      Sponsored
+      <h5>Sponsored</h5>
       <div className="sponsor">
         <div className="sponsor_image">
           <img src="https://strive.school/favicon.ico" alt="sponsor_logo" />
         </div>
-        <p className="ml-2 mt-3">
-          <b>Strive School</b>
+        <h6 className="ml-2 mt-3">
+          Strive School
           <div>
             <small>strive.school</small>
           </div>
-        </p>
+        </h6>
       </div>
       <div className="sponsor mt-3">
         <div className="sponsor_image">
@@ -23,38 +23,32 @@ function RightSideBar() {
             alt="Mr.Bean"
           />
         </div>
-        <p className="ml-2 mt-3">
-          <b>Mr. Bean</b>
+        <h6 className="ml-2 mt-3">
+          Mr. Bean
           <div>
             <small>mrlovalova.bean</small>
           </div>
-        </p>
+        </h6>
       </div>
       <hr />
-      Contacts
+      <h5>Contacts</h5>
       <div className="right pl-2">
         <div className="profile_pic_icon ">
           <img src="https://source.unsplash.com/random" alt="profile_pic" />
         </div>
-        <p className="ml-2 mt-3">
-          <b>FriendName</b>
-        </p>
+        <h6 className="ml-2 mt-3">FriendName</h6>
       </div>
       <div className="right pl-2">
         <div className="profile_pic_icon ">
           <img src="https://source.unsplash.com/random" alt="profile_pic" />
         </div>
-        <p className="ml-2 mt-3">
-          <b>FriendName</b>
-        </p>
+        <h6 className="ml-2 mt-3">FriendName</h6>
       </div>
       <div className="right pl-2">
         <div className="profile_pic_icon">
           <img src="https://source.unsplash.com/random" alt="profile_pic" />
         </div>
-        <p className="ml-2 mt-3">
-          <b>FriendName</b>
-        </p>
+        <h6 className="ml-2 mt-3">FriendName</h6>
       </div>
     </div>
   );

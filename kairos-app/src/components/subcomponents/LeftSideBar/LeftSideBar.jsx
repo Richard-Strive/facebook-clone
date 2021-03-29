@@ -14,71 +14,47 @@ function LeftSideBar() {
         <div className="profile_pic_icon ">
           <img src="https://source.unsplash.com/random" alt="profile_pic" />
         </div>
-        <p className="ml-2 mt-3">
-          <b>Username</b>
-        </p>
+        <h6 className="ml-2 mt-3 mb-3">Username</h6>
       </div>
       <div className="left pl-2">
         <AiFillInfoCircle className="icon" />
-        <p className="ml-2 mt-3">
-          <b>COVID-19 Information Centre</b>
-        </p>
+        <h6 className="ml-2 mt-3 mb-3">COVID-19 Information Centre</h6>
       </div>
       <div className="left pl-2">
         <FaUserFriends className="icon" />
-        <p className="ml-2 mt-3">
-          <b>Find Friends</b>
-        </p>
+        <h6 className="ml-2 mt-3 mb-3">Find Friends</h6>
       </div>
       <div className="left pl-2">
         <HiOutlineUserGroup className="icon" />
-        <p className="ml-2 mt-3">
-          <b>Groups</b>
-        </p>
+        <h6 className="ml-2 mt-3 mb-3">Groups</h6>
       </div>
       <div className="left pl-2">
         <AiTwotoneShop className="icon" />
-        <p className="ml-2 mt-3">
-          <b>Marketplace</b>
-        </p>
+        <h6 className="ml-2 mt-3 mb-3">Marketplace</h6>
       </div>
       <div className="left pl-2">
         <RiArrowDropDownLine className="icon" />
-        <p className="ml-2 mt-3">
-          <b>See more</b>
-        </p>
+        <h6 className="ml-2 mt-3 mb-3">See more</h6>
       </div>
       <hr />
 
       <div className="left pl-2">
-        <p className="ml-2 mt-3">
-          <b>Your shortcuts</b>
-        </p>
+        <h5 className="ml-2 mt-3 mb-3">Your shortcuts</h5>
       </div>
       <div className="left pl-2">
-        <p className="ml-2 mt-3">
-          <b>#PrayForRichard</b>
-        </p>
+        <h6 className="ml-2 mt-3 mb-3">#PrayForRichard</h6>
       </div>
       <div className="left pl-2">
-        <p className="ml-2 mt-3">
-          <b>#hireRichard</b>
-        </p>
+        <h6 className="ml-2 mt-3 mb-3">#hireRichard</h6>
       </div>
       <div className="left pl-2">
-        <p className="ml-2 mt-3">
-          <b>#iWillCleanYourDesktop4ever</b>
-        </p>
+        <h6 className="ml-2 mt-3 mb-3">#iWillCleanYourDesktop4ever</h6>
       </div>
       <div className="left pl-2">
-        <p className="ml-2 mt-3">
-          <b>#MandeepChain</b>
-        </p>
+        <h6 className="ml-2 mt-3 mb-3">#MandeepChain</h6>
       </div>
       <div className="left pl-2">
-        <p className="ml-2 mt-3">
-          <b>#PleseHashTagWork</b>
-        </p>
+        <h6 className="ml-2 mt-3 mb-3">#PleseHashTagWork</h6>
       </div>
     </div>
   );

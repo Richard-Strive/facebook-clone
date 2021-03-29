@@ -1,3 +1,19 @@
+.right_container {
+  font-size: 15px;
+  font-weight: 400;
+  color: #212529;
+}
+
+.right_container h5 {
+  color: #65676b;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.right_container small {
+  color: #65676b;
+}
+
 .sponsor {
   height: wrap;
   width: 100%;
@@ -20,4 +36,5 @@
   display: flex;
   align-items: center;
   height: 60px;
+  margin-left: -13px;
 }

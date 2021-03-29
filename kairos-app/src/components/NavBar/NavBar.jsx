@@ -111,12 +111,12 @@ function NavBar() {
             onChange={(e) => handleSearch(e)}
           />
         </div>
-        <button
+        {/* <button
           style={{ borderRadius: "50%", backgroundColor: "blue" }}
           onClick={() => startAssistant()}
         >
           Start listening
-        </button>
+        </button> */}
 
         <hr />
       </div>
