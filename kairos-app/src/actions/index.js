@@ -1,7 +1,7 @@
 // function to register user
 export default function (data) {
   return {
-    type: REGISTER_USER,
+    type: USER,
     payload: data,
   };
 }

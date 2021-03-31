@@ -1,9 +1,9 @@
 export default function (state = {}, action) {
   switch (action.type) {
-    case "RECUGNIZE_USER":
+    case "USER":
       return {
         ...state,
-        userID: action.payload,
+        user_obj: action.payload,
       };
 
     default:

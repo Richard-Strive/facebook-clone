@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
+import { connect } from "react-redux";
 import Webcam from "react-webcam";
 
 function Registration() {

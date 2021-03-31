@@ -3,23 +3,33 @@ import "./ProfilePagePost.css";
 import { Row, Col } from "react-bootstrap";
 import CreatePost from "../CreatePost/CreatePost";
 import DisplayedPost from "../DisplayedPost/DisplayedPost";
+import { connect } from "react-redux";
 import Modal from "../Modal/Modal.jsx";
 
-function ProfilePagePost() {
+const mapStateToProps = (state) => state;
+
+function ProfilePagePost({ user }) {
   const [open, setOpen] = useState(false);
 
   return (
     <div className="profile_page_post_container">
-      <Modal open={open} setOpen={setOpen} />
       <div className="profile_page_post_left mt-2">
         <div className="face_id_camera">
-          <img
-            src="https://specials-images.forbesimg.com/imageserve/5f76aa7a27e990f9cc618fe8/960x0.jpg?fit=scale"
-            alt="arificial_intelligence"
-            onClick={() => setOpen(!open)}
-          />
-          <h5>Enable Face ID login</h5>
+          {user.user_obj.faceRec ? (
+            <h5>You can log with face id</h5>
+          ) : (
+            <>
+              <Modal open={open} setOpen={setOpen} />
+              <img
+                src="https://specials-images.forbesimg.com/imageserve/5f76aa7a27e990f9cc618fe8/960x0.jpg?fit=scale"
+                alt="arificial_intelligence"
+                onClick={() => setOpen(!open)}
+              />
+              <h5>Enable Face ID login</h5>
+            </>
+          )}
         </div>
+
         <div className="friends_container mt-3 pt-3">
           <h6 className="ml-3">Friends</h6>
           <div className="friends_container_row mt-4">
@@ -82,4 +92,4 @@ function ProfilePagePost() {
   );
 }
 
-export default ProfilePagePost;
+export default connect(mapStateToProps)(ProfilePagePost);

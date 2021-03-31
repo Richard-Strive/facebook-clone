@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Modal from "../subcomponents/Modal/Modal";
 import { Form, Spinner } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+
 import "./LoginPage.css";
 
 function LoginPage() {
@@ -18,9 +19,7 @@ function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault(e);
-
     setLoading(true);
-
     try {
       const response = await fetch("http://localhost:5000/user/login", {
         method: "POST",
@@ -43,7 +42,7 @@ function LoginPage() {
           setLoading(false);
           setPassword("");
           setEmail("");
-          history.push("/home/main");
+          history.push("/home/me");
         }, 900);
       } else {
         setIsRegistered(!isRegistered);
@@ -56,7 +55,12 @@ function LoginPage() {
 
   return (
     <div className="login_page_container">
-      <Modal open={open} setOpen={setOpen} />
+      <Modal
+        open={open}
+        setOpen={setOpen}
+        isVerify={true}
+        setLoading={setLoading}
+      />
       <div className="login_page_logo_container">
         <div className="login_page_logo">
           <h2>
@@ -68,58 +72,63 @@ function LoginPage() {
         </div>
       </div>
       <div className="login_page_content_container">
-        <Form className="login_page_content" onSubmit={(e) => handleSubmit(e)}>
-          {isRegistered && <p className="pt-1">Wrong credentials</p>}
-          <Form.Group>
-            <Form.Control
-              type="email"
-              placeholder="Email address"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="login_page_email_input"
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="login_page_password_input"
-            />
-          </Form.Group>
-
-          <button
-            type="submit"
-            className={email && password ? "" : "disbled_button"}
-            disabled={email && password ? false : true}
+        <div>
+          <Form
+            className="login_page_content"
+            onSubmit={(e) => handleSubmit(e)}
           >
-            {loading ? (
-              <Spinner
-                className="mb-2"
-                animation="grow"
-                variant="primary"
-                size="sm"
+            {isRegistered && <p className="pt-1">Wrong credentials</p>}
+            <Form.Group>
+              <Form.Control
+                type="email"
+                placeholder="Email address"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="login_page_email_input"
               />
-            ) : (
-              "Log In"
-            )}
-          </button>
+            </Form.Group>
+            <Form.Group>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="login_page_password_input"
+              />
+            </Form.Group>
 
-          <button onClick={() => setOpen(!open)}>
-            Log In With Face ID
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+            <button
+              type="submit"
+              className={email && password ? "" : "disbled_button"}
+              disabled={email && password ? false : true}
+            >
+              {loading ? (
+                <Spinner
+                  className="mb-2"
+                  animation="grow"
+                  variant="primary"
+                  size="sm"
+                />
+              ) : (
+                "Log In"
+              )}
+            </button>
 
-          <hr className="login_hr" />
-          <button onClick={() => history.push("/register")}>
-            Create New Account
-          </button>
-        </Form>
+            <button onClick={() => setOpen(!open)}>
+              Log In With Face ID
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+
+            <hr className="login_hr" />
+            <button onClick={() => history.push("/register")}>
+              Create New Account
+            </button>
+          </Form>
+        </div>
       </div>
     </div>
   );

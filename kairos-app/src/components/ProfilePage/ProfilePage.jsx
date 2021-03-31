@@ -1,12 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./ProfilePage.css";
-
-import ProfilePagePost from "../subcomponents/ProfilePagePost/ProfilePagePost";
-
-import Paper from "@material-ui/core/Paper";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-
 import { MdPhotoCamera } from "react-icons/md";
 import { FaPen } from "react-icons/fa";
 import { HiDotsHorizontal } from "react-icons/hi";
@@ -14,7 +7,13 @@ import { BsFillEyeFill } from "react-icons/bs";
 import { GoSearch } from "react-icons/go";
 import { BsFillCaretDownFill } from "react-icons/bs";
 import { withStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 import clsx from "clsx";
+import ProfilePagePost from "../subcomponents/ProfilePagePost/ProfilePagePost";
+import { connect } from "react-redux";
+import Webcam from "react-webcam";
 
 const styles = {
   root: {
@@ -23,13 +22,46 @@ const styles = {
   },
 };
 
-function ProfilePage(props) {
+const mapStateToProps = (state) => state;
+
+const mapDispatchToProps = (dispacth) => ({
+  setUserData: (data) => dispacth({ type: "USER", payload: data }),
+});
+
+function ProfilePage({ classes, setUserData }) {
+  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState(null);
   const [value, setValue] = useState(2);
-  const { classes } = props;
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const token = localStorage.getItem("accessToken");
+
+  const getUser = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("http://localhost:5000/user/me", {
+        method: "GET",
+        headers: new Headers({
+          Authorization: token,
+        }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setUserData(data);
+        setUser(data);
+        console.log(data);
+      }
+    } catch (err) {
+      console.log("there is an error", err);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   return (
     <div className="profile_page_container">
@@ -96,4 +128,7 @@ function ProfilePage(props) {
   );
 }
 
-export default withStyles(styles)(ProfilePage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(ProfilePage));
