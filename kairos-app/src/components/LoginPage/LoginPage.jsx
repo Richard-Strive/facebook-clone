@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Modal from "../subcomponents/Modal/Modal";
-import { Form } from "react-bootstrap";
+import { Form, Spinner } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import "./LoginPage.css";
 
@@ -10,6 +10,7 @@ function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isRegistered, setIsRegistered] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const history = useHistory();
 
@@ -17,6 +18,9 @@ function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault(e);
+
+    setLoading(true);
+
     try {
       const response = await fetch("http://localhost:5000/user/login", {
         method: "POST",
@@ -35,19 +39,15 @@ function LoginPage() {
 
         localStorage.setItem("accessToken", data.token);
 
-        // set token on local storage
-
-        // set user obj on redux
-
-        // push user on main
-
-        // setTimeout(() => {
-        //   setPassword("");
-        //   setEmail("");
-        //   history.push("/home/main");
-        // }, 200);
+        setTimeout(() => {
+          setLoading(false);
+          setPassword("");
+          setEmail("");
+          history.push("/home/main");
+        }, 900);
       } else {
         setIsRegistered(!isRegistered);
+        setLoading(false);
       }
     } catch (err) {
       console.log("there is an error", err);
@@ -95,7 +95,16 @@ function LoginPage() {
             className={email && password ? "" : "disbled_button"}
             disabled={email && password ? false : true}
           >
-            Log In
+            {loading ? (
+              <Spinner
+                className="mb-2"
+                animation="grow"
+                variant="primary"
+                size="sm"
+              />
+            ) : (
+              "Log In"
+            )}
           </button>
 
           <button onClick={() => setOpen(!open)}>
