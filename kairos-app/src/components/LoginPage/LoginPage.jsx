@@ -1,10 +1,58 @@
 import React, { useState, useEffect } from "react";
 import Modal from "../subcomponents/Modal/Modal";
 import { Form } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import "./LoginPage.css";
 
 function LoginPage() {
   const [open, setOpen] = useState(false);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  const history = useHistory();
+
+  // https://intense-thicket-20816.herokuapp.com/user/registration
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(e);
+    try {
+      const response = await fetch("http://localhost:5000/user/login", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+
+        localStorage.setItem("accessToken", data.token);
+
+        // set token on local storage
+
+        // set user obj on redux
+
+        // push user on main
+
+        // setTimeout(() => {
+        //   setPassword("");
+        //   setEmail("");
+        //   history.push("/home/main");
+        // }, 200);
+      } else {
+        setIsRegistered(!isRegistered);
+      }
+    } catch (err) {
+      console.log("there is an error", err);
+    }
+  };
 
   return (
     <div className="login_page_container">
@@ -20,24 +68,36 @@ function LoginPage() {
         </div>
       </div>
       <div className="login_page_content_container">
-        <div className="login_page_content">
-          <Form>
-            <Form.Group>
-              <Form.Control
-                type="email"
-                placeholder="Email address"
-                className="login_page_email_input"
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                className="login_page_password_input"
-              />
-            </Form.Group>
-          </Form>
-          <button>Log In</button>
+        <Form className="login_page_content" onSubmit={(e) => handleSubmit(e)}>
+          {isRegistered && <p className="pt-1">Wrong credentials</p>}
+          <Form.Group>
+            <Form.Control
+              type="email"
+              placeholder="Email address"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="login_page_email_input"
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="login_page_password_input"
+            />
+          </Form.Group>
+
+          <button
+            type="submit"
+            className={email && password ? "" : "disbled_button"}
+            disabled={email && password ? false : true}
+          >
+            Log In
+          </button>
+
           <button onClick={() => setOpen(!open)}>
             Log In With Face ID
             <span></span>
@@ -47,8 +107,10 @@ function LoginPage() {
           </button>
 
           <hr className="login_hr" />
-          <button>Create New Account</button>
-        </div>
+          <button onClick={() => history.push("/register")}>
+            Create New Account
+          </button>
+        </Form>
       </div>
     </div>
   );

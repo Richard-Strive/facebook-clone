@@ -64,10 +64,29 @@
   color: white;
   font-weight: bold;
   margin-top: 20px;
+  cursor: pointer;
 }
 
 .sign_up_btn:hover {
   background: linear-gradient(#76b866, #578843);
+}
+
+.sign_up_btn:active {
+  background: linear-gradient(#67ae55, #4a7538);
+}
+.sign_up_btn_disabled {
+  display: block;
+  width: 194px;
+  height: 39px;
+  border: 1px solid #2c5115;
+  box-shadow: inset 0 1px 1px #a4e388;
+  /* background-color: #69a74e; */
+  background: linear-gradient(#67ae55, #578843);
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: not-allowed;
 }
 
 /*
