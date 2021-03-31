@@ -5,7 +5,9 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import VocalAssisten from "./components/VocalAssistenEnv/VocalAssisten";
+
 import NavBar from "./components/NavBar/NavBar";
+
 import MainPage from "./components/MainPage/MainPage";
 import RegistrationPage from "./components/RegistrationPage/RegistrationPage";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
