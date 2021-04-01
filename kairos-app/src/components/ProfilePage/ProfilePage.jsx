@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
+
 import "./ProfilePage.css";
 import { MdPhotoCamera } from "react-icons/md";
 import { FaPen } from "react-icons/fa";

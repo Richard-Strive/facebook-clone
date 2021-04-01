@@ -27,6 +27,16 @@
   height: 40px;
   width: 39px;
   color: #1089f0;
+  cursor: pointer;
+}
+.navbar_search_input > .navbar_search_facebook_icon:hover {
+  color: #69a3d6;
+  cursor: pointer;
+}
+.navbar_search_input > .navbar_search_facebook_icon:active {
+  height: 38px;
+  width: 36px;
+  cursor: pointer;
 }
 
 .navbar_center_icons {
@@ -113,6 +123,13 @@
   justify-content: center;
   background-color: #f0f2f5;
   border-radius: 50%;
+  cursor: pointer;
+}
+.navbar_plus_icon_container:hover,
+.navbar_message_icon_container:hover,
+.navbar_notification_icon_container:hover,
+.navbar_dropdown_icon_container :hover {
+  background-color: #dce8f3;
 }
 
 .navbar_message_icon,
@@ -152,10 +169,18 @@
   display: flex;
   align-items: center;
   border-radius: 20px;
+  cursor: pointer;
 
   font-size: small;
   background-color: #dce8f3;
-  color: #1089f0;
+}
+
+.profile_redirect:hover {
+  background-color: #95c6f1;
+}
+
+.profile_redirect:active {
+  background-color: #6f91af;
 }
 
 .profile_redirect > p {

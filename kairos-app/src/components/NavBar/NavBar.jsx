@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import { AiFillHome } from "react-icons/ai";
 import { FaUserFriends } from "react-icons/fa";
@@ -23,6 +24,8 @@ function NavBar() {
     "this the second one",
     "and this is working",
   ]);
+
+  const history = useHistory();
 
   class ArtyomCommandsManager {
     constructor(ArtyomInstance) {
@@ -102,7 +105,10 @@ function NavBar() {
   return (
     <div className="navbar_container">
       <div className="navbar_search_input">
-        <FaFacebook className="navbar_search_facebook_icon mr-2" />
+        <FaFacebook
+          className="navbar_search_facebook_icon mr-2"
+          onClick={() => history.push("/home/main")}
+        />
         <div className="search_input ml-2">
           <input
             type="text"
@@ -139,14 +145,20 @@ function NavBar() {
         </div>
       </div>
       <div className="navbar_right_icons">
-        <div className="profile_redirect">
+        <div
+          className="profile_redirect"
+          onClick={() => history.push("/home/me")}
+        >
           <img src="https://source.unsplash.com/random" alt="" />
           <h6 className="mt-1">Username</h6>
         </div>
         <div className="navbar_plus_icon_container">
           <FiPlus className="navbar_plus_icon" />
         </div>
-        <div className="navbar_message_icon_container">
+        <div
+          className="navbar_message_icon_container"
+          onClick={() => history.push("/home/messages")}
+        >
           <FaFacebookMessenger className="navbar_message_icon" />
         </div>
         <div className="navbar_notification_icon_container">
