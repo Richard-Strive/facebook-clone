@@ -5,6 +5,8 @@ import { RiLiveFill } from "react-icons/ri";
 import { CgSmileMouthOpen } from "react-icons/cg";
 import "./CreatePost.css";
 
+// Need to make the same trick that i did in Modal
+
 function CreatePost() {
   return (
     <div className="create_post_container">

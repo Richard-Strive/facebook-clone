@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./Modal.css";
 
+// FIX SET openBG FUN
+
 const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = (dispacth) => ({
@@ -209,7 +211,12 @@ function Modal({
                 label="Image input"
                 onChange={(e) => setFile(e.target.files[0])}
               />
-              <button type="submit" onClick={() => setOpenBg(!openBg)}>
+              <button
+                type="submit"
+                onClick={() =>
+                  `${isBackground ? setOpenBg(!openBg) : setOpen(!open)}`
+                }
+              >
                 Sumbit
               </button>
             </Form.Group>
