@@ -69,6 +69,7 @@
   padding: 10px;
   border-radius: 50%;
   background-color: #dadbe1;
+  cursor: pointer;
 }
 
 .background_image_edit_icon {
@@ -81,6 +82,7 @@
   position: absolute;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .background_image_edit_icon > .profile_page_photo_icon {

@@ -6,21 +6,10 @@ import { HiDotsHorizontal } from "react-icons/hi";
 import { BsFillEyeFill } from "react-icons/bs";
 import { GoSearch } from "react-icons/go";
 import { BsFillCaretDownFill } from "react-icons/bs";
-import { withStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import clsx from "clsx";
+import Modal from "../subcomponents/Modal/Modal";
+
 import ProfilePagePost from "../subcomponents/ProfilePagePost/ProfilePagePost";
 import { connect } from "react-redux";
-import Webcam from "react-webcam";
-
-const styles = {
-  root: {
-    height: 40,
-    boxShadow: "none",
-  },
-};
 
 const mapStateToProps = (state) => state;
 
@@ -28,19 +17,17 @@ const mapDispatchToProps = (dispacth) => ({
   setUserData: (data) => dispacth({ type: "USER", payload: data }),
 });
 
-function ProfilePage({ classes, setUserData }) {
-  const [loading, setLoading] = useState(false);
+function ProfilePage({ setUserData }) {
+  const [loading, setLoading] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [openBg, setOpenBg] = useState(false);
   const [user, setUser] = useState(null);
-  const [value, setValue] = useState(2);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  console.log(user);
 
   const token = localStorage.getItem("accessToken");
 
   const getUser = async () => {
-    setLoading(true);
     try {
       const response = await fetch("http://localhost:5000/user/me", {
         method: "GET",
@@ -52,7 +39,7 @@ function ProfilePage({ classes, setUserData }) {
         const data = await response.json();
         setUserData(data);
         setUser(data);
-        console.log(data);
+        setLoading(false);
       }
     } catch (err) {
       console.log("there is an error", err);
@@ -67,38 +54,27 @@ function ProfilePage({ classes, setUserData }) {
     <div className="profile_page_container">
       <div className="profile_page_header">
         <div className="profile_page_background_img">
-          <img
-            src="https://source.unsplash.com/random"
-            alt="background_image"
+          <img src={loading ? " " : user.bgImage} alt="background_image" />
+          <img src={loading ? " " : user.pfImage} alt="profile_image" />
+          <Modal open={open} setOpen={setOpen} isProfile={true} />
+          <MdPhotoCamera
+            className="profile_page_photo_icon"
+            onClick={() => setOpen(!open)}
           />
-          <img
-            src="https://source.unsplash.com/1600x900/?face"
-            alt="background_image"
-          />
-          <MdPhotoCamera className="profile_page_photo_icon" />
           <div className="background_image_edit_icon">
-            <MdPhotoCamera className="profile_page_photo_icon ml-1" />
+            <Modal openBg={openBg} setOpenBg={setOpenBg} isBackground={true} />
+            <MdPhotoCamera
+              className="profile_page_photo_icon ml-1"
+              onClick={() => setOpenBg(!openBg)}
+            />
             Edit Cover Photo
           </div>
         </div>
-        <h1 className="mt-3">Username</h1>
+        <h1 className="mt-3">{loading ? "...loading" : user.firstName}</h1>
         <p>Add bio</p>
         <hr className="anti_flex_hr" />
         <div className="profile_page_header_bottom">
           <div className="profile_page_header_bottom_tabs">
-            <Paper className={clsx(classes.root)} square>
-              <Tabs
-                value={value}
-                indicatorColor="primary"
-                textColor="primary"
-                onChange={handleChange}
-                aria-label="tabs"
-              >
-                <Tab label="Posts" />
-                <Tab label="About" />
-                <Tab label="Friends" />
-              </Tabs>
-            </Paper>
             <div className="profile_page_header_bottom_more_dropdown pl-3 pr-3">
               more
               <BsFillCaretDownFill />
@@ -128,7 +104,4 @@ function ProfilePage({ classes, setUserData }) {
   );
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withStyles(styles)(ProfilePage));
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

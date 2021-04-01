@@ -16,10 +16,10 @@ function ProfilePagePost({ user }) {
       <div className="profile_page_post_left mt-2">
         <div className="face_id_camera">
           {user.user_obj.faceRec ? (
-            <h5>You can log with face id</h5>
+            <h5>You can log in with face id</h5>
           ) : (
             <>
-              <Modal open={open} setOpen={setOpen} />
+              <Modal open={open} setOpen={setOpen} isRegister={true} />
               <img
                 src="https://specials-images.forbesimg.com/imageserve/5f76aa7a27e990f9cc618fe8/960x0.jpg?fit=scale"
                 alt="arificial_intelligence"

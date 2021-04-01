@@ -1,8 +1,8 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import VocalAssisten from "./components/VocalAssistenEnv/VocalAssisten";
 
@@ -18,11 +18,7 @@ function App() {
   return (
     <>
       <Router>
-        <Route
-          exact
-          path="/register"
-          render={(props) => <RegistrationPage {...props} />}
-        />
+        <Route exact path="/" component={RegistrationPage} />
         <Route
           exact
           path="/login"

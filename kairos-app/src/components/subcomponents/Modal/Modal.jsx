@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Form } from "react-bootstrap";
 import Webcam from "react-webcam";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -10,14 +11,64 @@ const mapDispatchToProps = (dispacth) => ({
   setUserData: (data) => dispacth({ type: "USER", payload: data }),
 });
 
-function Modal({ open, setOpen, isVerify, user, setLoading, setUserData }) {
+function Modal({
+  open,
+  openBg,
+  setOpenBg,
+  setOpen,
+  isVerify,
+  isRegister,
+  user,
+  setLoading,
+  setUserData,
+  isPost,
+  isProfile,
+  isBackground,
+}) {
   const WebCamRef = useRef(null);
+  const formRef = useRef(null);
+
   const [loader, setLoader] = useState(false);
   const [userId, setUserId] = useState("");
+  const [file, setFile] = useState(null);
 
   const history = useHistory();
 
   const token = localStorage.getItem("accessToken");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = new FormData();
+    data.append("image", file);
+
+    let url = "";
+
+    if (isProfile) {
+      url = "http://localhost:5000/user/me/add-profile-image";
+    }
+    if (isBackground) {
+      url = "http://localhost:5000/user/me/add-background-image";
+    }
+
+    console.log("the url-->", url);
+
+    try {
+      const response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          Authorization: token,
+        },
+        body: data,
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setUserData(data);
+      }
+    } catch (err) {
+      console.log("there is an error", err);
+    }
+  };
 
   const getUserTokens = async () => {
     setLoader(true);
@@ -102,13 +153,22 @@ function Modal({ open, setOpen, isVerify, user, setLoading, setUserData }) {
         }
 
         if (isVerify) {
-          getUserTokens();
-          setLoading(false);
-          setUserId(data.images[0].transaction.subject_id);
+          if (data.images[0].transaction.status !== "success") {
+            alert("No match");
+            setLoading(false);
+            setTimeout(() => {
+              history.push("/home/register");
+            }, 300);
+          }
 
-          setTimeout(() => {
-            history.push("/home/me");
-          }, 300);
+          if (data.images[0].transaction.status == "success") {
+            setLoading(false);
+            setUserId(data.images[0].transaction.subject_id);
+            getUserTokens();
+            setTimeout(() => {
+              history.push("/home/me");
+            }, 300);
+          }
         }
       }
     } catch (err) {
@@ -120,21 +180,39 @@ function Modal({ open, setOpen, isVerify, user, setLoading, setUserData }) {
     <div>
       <div
         className="modal"
-        style={{ display: `${open ? "flex" : "none"}` }}
-        onClick={() => setOpen(!open)}
+        style={{ display: `${open || openBg ? "flex" : "none"}` }}
       >
-        <span className="close" onClick={() => setOpen(!open)}>
+        <span
+          className="close"
+          onClick={() =>
+            `${isBackground ? setOpenBg(!openBg) : setOpen(!open)}`
+          }
+        >
           &times;
         </span>
-        <Webcam
-          ref={WebCamRef}
-          className="modal_web"
-          screenshotFormat="image/png"
-          style={{
-            border: `3px solid ${loader ? "orange" : "green"}`,
-          }}
-          onClick={() => snap()}
-        />
+        {isVerify || isRegister ? (
+          <Webcam
+            ref={WebCamRef}
+            className="modal_web"
+            screenshotFormat="image/png"
+            style={{
+              border: `3px solid ${loader ? "orange" : "green"}`,
+            }}
+            onClick={() => snap()}
+          />
+        ) : (
+          <Form onSubmit={(e) => handleSubmit(e)}>
+            <Form.Group className="file_upload_input">
+              <Form.File
+                id="exampleFormControlFile1"
+                label="Image input"
+                ref={formRef}
+                onChange={(e) => setFile(e.target.files[0])}
+              />
+              <button type="submit">Sumbit</button>
+            </Form.Group>
+          </Form>
+        )}
       </div>
     </div>
   );
