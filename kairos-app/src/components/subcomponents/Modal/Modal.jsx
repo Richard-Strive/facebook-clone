@@ -26,7 +26,6 @@ function Modal({
   isBackground,
 }) {
   const WebCamRef = useRef(null);
-  const formRef = useRef(null);
 
   const [loader, setLoader] = useState(false);
   const [userId, setUserId] = useState("");
@@ -122,6 +121,7 @@ function Modal({
   const snap = async () => {
     const picture = WebCamRef.current.getScreenshot();
     const faceIdPic = picture.slice(0, 14);
+    setOpen(!open);
 
     try {
       const url = `https://api.kairos.com/${isVerify ? "recognize" : "enroll"}`;
@@ -164,6 +164,7 @@ function Modal({
           if (data.images[0].transaction.status == "success") {
             setLoading(false);
             setUserId(data.images[0].transaction.subject_id);
+
             getUserTokens();
             setTimeout(() => {
               history.push("/home/me");
@@ -206,10 +207,11 @@ function Modal({
               <Form.File
                 id="exampleFormControlFile1"
                 label="Image input"
-                ref={formRef}
                 onChange={(e) => setFile(e.target.files[0])}
               />
-              <button type="submit">Sumbit</button>
+              <button type="submit" onClick={() => setOpenBg(!openBg)}>
+                Sumbit
+              </button>
             </Form.Group>
           </Form>
         )}
