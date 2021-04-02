@@ -5,8 +5,6 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./Modal.css";
 
-// FIX SET openBG FUN
-
 const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = (dispacth) => ({
@@ -37,7 +35,7 @@ function Modal({
 
   const token = localStorage.getItem("accessToken");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, isProfile, isBackground, setUserData) => {
     e.preventDefault();
 
     const data = new FormData();

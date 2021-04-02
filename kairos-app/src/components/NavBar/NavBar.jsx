@@ -10,6 +10,7 @@ import { FiPlus } from "react-icons/fi";
 import { FaFacebookMessenger } from "react-icons/fa";
 import { RiNotification2Fill } from "react-icons/ri";
 import { BsFillCaretDownFill } from "react-icons/bs";
+import { BiMicrophone } from "react-icons/bi";
 import { FaFacebook } from "react-icons/fa";
 import Artyom from "artyom.js";
 
@@ -17,7 +18,12 @@ import "./NavBar.css";
 
 const Jarvis = new Artyom();
 
-function NavBar() {
+const mapStateToProps = (state) => state;
+const mapDispatchToProps = (dispacth) => ({
+  setUserData: (data) => dispacth({ type: "USER", payload: data }),
+});
+
+function NavBar({ setUserData, user }) {
   const [search, setSearch] = useState("");
   const [array, setArray] = useState([
     "This is the first post",
@@ -26,6 +32,28 @@ function NavBar() {
   ]);
 
   const history = useHistory();
+  const token = localStorage.getItem("accessToken");
+
+  const searchUser = async (search) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/user/finduser/${search}`,
+        {
+          method: "GET",
+          headers: new Headers({
+            Authorization: token,
+          }),
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+
+        console.log(data);
+      }
+    } catch (err) {
+      console.log("there is an error", err);
+    }
+  };
 
   class ArtyomCommandsManager {
     constructor(ArtyomInstance) {
@@ -97,9 +125,10 @@ function NavBar() {
       });
   };
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setSearch(e.target.value);
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      searchUser(search);
+    }
   };
 
   return (
@@ -114,18 +143,15 @@ function NavBar() {
             type="text"
             placeholder="Search Facebook"
             value={search}
-            onChange={(e) => handleSearch(e)}
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) => handleKeyPress(e)}
           />
         </div>
-        {/* <button
-          style={{ borderRadius: "50%", backgroundColor: "blue" }}
-          onClick={() => startAssistant()}
-        >
-          Start listening
-        </button> */}
-
         <hr />
       </div>
+      <button onClick={() => startAssistant()}>
+        <BiMicrophone className="navbar_arios_microphone_icon" />
+      </button>
 
       <div className="navbar_center_icons">
         <div className="navbar_home_icon_container">

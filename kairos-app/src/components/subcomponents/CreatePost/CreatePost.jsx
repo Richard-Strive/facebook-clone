@@ -1,13 +1,12 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { connect } from "react-redux";
+
 import { IoMdPhotos } from "react-icons/io";
 import { RiLiveFill } from "react-icons/ri";
 import { CgSmileMouthOpen } from "react-icons/cg";
 import "./CreatePost.css";
 
-// Need to make the same trick that i did in Modal
-
-function CreatePost() {
+function CreatePost({ isMain, isProfile }) {
   return (
     <div className="create_post_container">
       <div className="create_post_header pt-2">
