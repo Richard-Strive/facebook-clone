@@ -102,13 +102,24 @@
 }
 
 .profile_page_header_bottom_tabs {
-  width: 50%;
-  height: 100%;
+  width: 88px;
+  height: 60px;
+  color: #65676b;
+  font-size: 15px;
+  font-weight: 600;
   display: flex;
 }
 .profile_page_header_bottom_tabs .profile_page_header_bottom_more_dropdown {
   display: flex;
   align-items: center;
+}
+
+.profile_page_header_bottom_more_dropdown:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  width: 88px;
+  height: 60px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .profile_page_header_bottom_left {

@@ -1,6 +1,6 @@
 export default function (state = {}, action) {
   switch (action.type) {
-    case "USER":
+    case "SEL_USER":
       return {
         ...state,
         user_obj: action.payload,

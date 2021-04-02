@@ -12,6 +12,7 @@ import { RiNotification2Fill } from "react-icons/ri";
 import { BsFillCaretDownFill } from "react-icons/bs";
 import { BiMicrophone } from "react-icons/bi";
 import { FaFacebook } from "react-icons/fa";
+import { connect } from "react-redux";
 import Artyom from "artyom.js";
 
 import "./NavBar.css";
@@ -21,15 +22,13 @@ const Jarvis = new Artyom();
 const mapStateToProps = (state) => state;
 const mapDispatchToProps = (dispacth) => ({
   setUserData: (data) => dispacth({ type: "USER", payload: data }),
+  setSelUser: (data) => dispacth({ type: "SEL_USER", payload: data }),
 });
 
-function NavBar({ setUserData, user }) {
+function NavBar({ setUserData, user, selUser, setSelUser }) {
   const [search, setSearch] = useState("");
-  const [array, setArray] = useState([
-    "This is the first post",
-    "this the second one",
-    "and this is working",
-  ]);
+  const [usersFound, setUsersFound] = useState([]);
+  const [showBox, setShowBox] = useState(false);
 
   const history = useHistory();
   const token = localStorage.getItem("accessToken");
@@ -47,7 +46,8 @@ function NavBar({ setUserData, user }) {
       );
       if (response.ok) {
         const data = await response.json();
-
+        setUsersFound(data);
+        setShowBox(true);
         console.log(data);
       }
     } catch (err) {
@@ -77,16 +77,7 @@ function NavBar({ setUserData, user }) {
           smart: true,
           action: (i, name) => {
             Artyom.say(`Searching for ${name}`);
-
             setSearch(name);
-
-            window.location.pathname = "/me";
-          },
-        },
-        {
-          indexes: ["Read post"],
-          action: () => {
-            array.map((post) => Artyom.say(post));
           },
         },
       ]);
@@ -131,6 +122,15 @@ function NavBar({ setUserData, user }) {
     }
   };
 
+  const selecyUserHandler = () => {
+    setSelUser(usersFound);
+    setShowBox(!showBox);
+    setTimeout(() => {
+      setSearch("");
+      history.push("/home/me");
+    }, 500);
+  };
+
   return (
     <div className="navbar_container">
       <div className="navbar_search_input">
@@ -152,6 +152,17 @@ function NavBar({ setUserData, user }) {
       <button onClick={() => startAssistant()}>
         <BiMicrophone className="navbar_arios_microphone_icon" />
       </button>
+
+      {showBox ? (
+        <div className="navbar_found_users_container">
+          <div className="profile_pic_icon" onClick={() => selecyUserHandler()}>
+            <img src="https://source.unsplash.com/random" alt="profile_pic" />
+            <h6 className="ml-2 mt-3 mb-3">{usersFound.firstName}</h6>
+          </div>
+        </div>
+      ) : (
+        " "
+      )}
 
       <div className="navbar_center_icons">
         <div className="navbar_home_icon_container">
@@ -198,4 +209,4 @@ function NavBar({ setUserData, user }) {
   );
 }
 
-export default NavBar;
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

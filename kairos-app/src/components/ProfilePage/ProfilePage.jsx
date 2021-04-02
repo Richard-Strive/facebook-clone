@@ -77,7 +77,22 @@ function ProfilePage({ setUserData }) {
         <div className="profile_page_header_bottom">
           <div className="profile_page_header_bottom_tabs">
             <div className="profile_page_header_bottom_more_dropdown pl-3 pr-3">
-              more
+              Posts
+            </div>
+            <div className="profile_page_header_bottom_more_dropdown pl-3 pr-3">
+              About
+            </div>
+            <div className="profile_page_header_bottom_more_dropdown pl-3 pr-3">
+              More
+            </div>
+            <div className="profile_page_header_bottom_more_dropdown pl-3 pr-3">
+              Friends
+            </div>
+            <div className="profile_page_header_bottom_more_dropdown pl-3 pr-3">
+              Photo
+            </div>
+            <div className="profile_page_header_bottom_more_dropdown pl-3 pr-3">
+              More
               <BsFillCaretDownFill />
             </div>
           </div>

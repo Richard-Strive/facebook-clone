@@ -6,6 +6,14 @@ export default function (data) {
   };
 }
 
+// function to select a user
+export default function (data) {
+  return {
+    type: SEL_USER,
+    payload: data,
+  };
+}
+
 // function to recognize user
 export default function (data) {
   return {
