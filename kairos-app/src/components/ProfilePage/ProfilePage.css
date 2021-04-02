@@ -160,4 +160,8 @@
   margin-top: 100px;
   background-color: #dadbe1;
 }
-/* NEED TO ADJUST HEIGHT*/
+
+.add_bio {
+  color: #1785f2;
+  font-weight: 600;
+}
