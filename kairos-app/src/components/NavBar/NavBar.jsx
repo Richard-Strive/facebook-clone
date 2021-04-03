@@ -20,6 +20,7 @@ import "./NavBar.css";
 const Jarvis = new Artyom();
 
 const mapStateToProps = (state) => state;
+
 const mapDispatchToProps = (dispacth) => ({
   setUserData: (data) => dispacth({ type: "USER", payload: data }),
   setSelUser: (data) => dispacth({ type: "SEL_USER", payload: data }),
@@ -177,7 +178,20 @@ function NavBar({ setUserData, user, selUser, setSelUser, setIsSelected }) {
         </div>
         <div className="navbar_friends_icon_container">
           <FaUserFriends className="navbar_friends_icon" />
-          <div className="friend_notification_circle">2</div>
+          {user.user_obj !== "" ? (
+            <div
+              className="friend_notification_circle"
+              style={{
+                display: `${
+                  user.user_obj.friendRequest.length > 0 ? "flex" : "none"
+                }`,
+              }}
+            >
+              {user.user_obj.friendRequest.length}
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <div className="navbar_video_icon_container">
           <MdOndemandVideo className="navbar_video_icon" />
