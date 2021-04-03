@@ -1,16 +1,18 @@
 import React from "react";
-import { connect } from "react-redux";
 
+import { connect } from "react-redux";
 import { IoMdPhotos } from "react-icons/io";
 import { RiLiveFill } from "react-icons/ri";
 import { CgSmileMouthOpen } from "react-icons/cg";
 import "./CreatePost.css";
 
-function CreatePost({ isMain, isProfile }) {
+const mapStateToProps = (state) => state;
+
+function CreatePost({ isMain, isProfile, user }) {
   return (
     <div className="create_post_container">
       <div className="create_post_header pt-2">
-        <img src="https://source.unsplash.com/random" alt="profile_pic" />
+        <img src={`${user.user_obj.pfImage}`} alt="profile_pic" />
         <div className="create_post_input">
           <input type="text" placeholder="What's on your mind, User?" />
         </div>
@@ -34,4 +36,4 @@ function CreatePost({ isMain, isProfile }) {
   );
 }
 
-export default CreatePost;
+export default connect(mapStateToProps)(CreatePost);

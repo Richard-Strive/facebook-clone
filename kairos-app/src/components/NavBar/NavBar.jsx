@@ -164,7 +164,7 @@ function NavBar({ setUserData, user, selUser, setSelUser, setIsSelected }) {
       {showBox ? (
         <div className="navbar_found_users_container">
           <div className="profile_pic_icon" onClick={() => selecyUserHandler()}>
-            <img src="https://source.unsplash.com/random" alt="profile_pic" />
+            <img src={`${user.user_obj.pfImage}`} alt="profile_pic" />
             <h6 className="ml-2 mt-3 mb-3">{usersFound.firstName}</h6>
           </div>
         </div>
