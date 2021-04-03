@@ -35,7 +35,7 @@ function Modal({
 
   const token = localStorage.getItem("accessToken");
 
-  const handleSubmit = async (e, isProfile, isBackground, setUserData) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const data = new FormData();
@@ -63,6 +63,7 @@ function Modal({
       if (response.ok) {
         const data = await response.json();
         setUserData(data);
+        console.log(data);
       }
     } catch (err) {
       console.log("there is an error", err);

@@ -165,3 +165,31 @@
   color: #1785f2;
   font-weight: 600;
 }
+
+.friend_req_btn {
+  outline: none;
+  border: none;
+  width: 123px;
+  height: 36px;
+  color: #0e78e4;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 15px;
+  background-color: #e7f3ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.friend_req_btn:hover {
+  background-color: #dce8f3;
+}
+.friend_req_btn:active {
+  background-color: #cee7ff;
+}
+
+.friend_req_btn_icon {
+  width: 16px;
+  height: 16px;
+  color: #0e78e4;
+}

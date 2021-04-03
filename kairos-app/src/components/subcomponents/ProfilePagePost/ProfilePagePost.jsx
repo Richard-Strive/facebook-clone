@@ -8,13 +8,16 @@ import Modal from "../Modal/Modal.jsx";
 
 const mapStateToProps = (state) => state;
 
-function ProfilePagePost({ user }) {
+function ProfilePagePost({ user, isSelectedUser }) {
   const [open, setOpen] = useState(false);
 
   return (
     <div className="profile_page_post_container">
       <div className="profile_page_post_left mt-2">
-        <div className="face_id_camera">
+        <div
+          className="face_id_camera"
+          style={{ display: `${isSelectedUser ? "none" : "flex"}` }}
+        >
           {user.user_obj.faceRec ? (
             <h5>You can log in with face id</h5>
           ) : (
@@ -79,7 +82,10 @@ function ProfilePagePost({ user }) {
         </div>
       </div>
       <div className="profile_page_post_right mt-2">
-        <div className="profile_page_create_post">
+        <div
+          className="profile_page_create_post"
+          style={{ display: `${isSelectedUser ? "none" : "flex"}` }}
+        >
           <CreatePost />
         </div>
         <div className="profile_page_displayed_post">

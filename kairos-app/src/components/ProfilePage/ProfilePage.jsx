@@ -7,6 +7,7 @@ import { HiDotsHorizontal } from "react-icons/hi";
 import { BsFillEyeFill } from "react-icons/bs";
 import { GoSearch } from "react-icons/go";
 import { BsFillCaretDownFill } from "react-icons/bs";
+import { HiUserAdd } from "react-icons/hi";
 import Modal from "../subcomponents/Modal/Modal";
 
 import ProfilePagePost from "../subcomponents/ProfilePagePost/ProfilePagePost";
@@ -16,13 +17,20 @@ const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = (dispacth) => ({
   setUserData: (data) => dispacth({ type: "USER", payload: data }),
+  setIsSelected: (data) => dispacth({ type: "SET_IS_SEL", payload: data }),
 });
 
-function ProfilePage({ setUserData }) {
+function ProfilePage({
+  setUserData,
+  selUser,
+  isSelectedUser,
+  setIsSelected,
+  user,
+}) {
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [openBg, setOpenBg] = useState(false);
-  const [user, setUser] = useState(null);
+  const [userTest, setUserTest] = useState(null);
 
   console.log(user);
 
@@ -39,7 +47,6 @@ function ProfilePage({ setUserData }) {
       if (response.ok) {
         const data = await response.json();
         setUserData(data);
-        setUser(data);
         setLoading(false);
       }
     } catch (err) {
@@ -55,24 +62,50 @@ function ProfilePage({ setUserData }) {
     <div className="profile_page_container">
       <div className="profile_page_header">
         <div className="profile_page_background_img">
-          <img src={loading ? " " : user.bgImage} alt="background_image" />
-          <img src={loading ? " " : user.pfImage} alt="profile_image" />
-          <Modal open={open} setOpen={setOpen} isProfile={true} />
-          <MdPhotoCamera
-            className="profile_page_photo_icon"
-            onClick={() => setOpen(!open)}
+          <img
+            src={loading ? " " : user.user_obj.bgImage}
+            alt="background_image"
           />
-          <div className="background_image_edit_icon">
-            <Modal openBg={openBg} setOpenBg={setOpenBg} isBackground={true} />
+          <img
+            src={loading ? " " : user.user_obj.pfImage}
+            alt="profile_image"
+          />
+          <div style={{ display: `${isSelectedUser ? "none" : "block"}` }}>
+            <Modal open={open} setOpen={setOpen} isProfile={true} />
             <MdPhotoCamera
-              className="profile_page_photo_icon ml-1"
-              onClick={() => setOpenBg(!openBg)}
+              className="profile_page_photo_icon"
+              onClick={() => setOpen(!open)}
             />
-            Edit Cover Photo
+
+            <div className="background_image_edit_icon">
+              <Modal
+                openBg={openBg}
+                setOpenBg={setOpenBg}
+                isBackground={true}
+              />
+              <MdPhotoCamera
+                className="profile_page_photo_icon ml-1"
+                onClick={() => setOpenBg(!openBg)}
+              />
+              Edit Cover Photo
+            </div>
           </div>
         </div>
-        <h1 className="mt-3">{loading ? "...loading" : user.firstName}</h1>
-        <p className="add_bio"> Add bio</p>
+        <h1 className="mt-3">
+          {loading
+            ? "...loading"
+            : `${
+                isSelectedUser
+                  ? selUser.user_obj.firstName
+                  : user.user_obj.firstName
+              }`}
+        </h1>
+        <p
+          className="add_bio"
+          style={{ display: `${isSelectedUser ? "none" : "block"}` }}
+        >
+          Add bio
+        </p>
         <hr className="anti_flex_hr" />
         <div className="profile_page_header_bottom">
           <div className="profile_page_header_bottom_tabs">
@@ -83,38 +116,46 @@ function ProfilePage({ setUserData }) {
               About
             </div>
             <div className="profile_page_header_bottom_more_dropdown pl-3 pr-3">
-              More
-            </div>
-            <div className="profile_page_header_bottom_more_dropdown pl-3 pr-3">
               Friends
             </div>
             <div className="profile_page_header_bottom_more_dropdown pl-3 pr-3">
               Photo
             </div>
             <div className="profile_page_header_bottom_more_dropdown pl-3 pr-3">
+              Video
+            </div>
+            <div className="profile_page_header_bottom_more_dropdown pl-3 pr-3">
               More
               <BsFillCaretDownFill />
             </div>
           </div>
-          <div className="profile_page_header_bottom_left">
-            <div className="background_image_edit_icon">
-              <FaPen className="profile_page_pen_icon ml-4 mr-2" />
-              Edit Profile
+
+          {isSelectedUser ? (
+            <button className="friend_req_btn">
+              <HiUserAdd className="friend_req_btn_icon" />
+              Add Friend
+            </button>
+          ) : (
+            <div className="profile_page_header_bottom_left">
+              <div className="background_image_edit_icon">
+                <FaPen className="profile_page_pen_icon ml-4 mr-2" />
+                Edit Profile
+              </div>
+              <div className="profile_eye_icon">
+                <BsFillEyeFill className="eye_icon" />
+              </div>
+              <div className="profile_search_icon">
+                <GoSearch className="search_icon" />
+              </div>
+              <div className="profile_dots_icon">
+                <HiDotsHorizontal className="dots_icon" />
+              </div>
             </div>
-            <div className="profile_eye_icon">
-              <BsFillEyeFill className="eye_icon" />
-            </div>
-            <div className="profile_search_icon">
-              <GoSearch className="search_icon" />
-            </div>
-            <div className="profile_dots_icon">
-              <HiDotsHorizontal className="dots_icon" />
-            </div>
-          </div>
+          )}
         </div>
       </div>
       <div className="profile_component_container">
-        <ProfilePagePost />
+        <ProfilePagePost isSelectedUser={isSelectedUser} />
       </div>
     </div>
   );

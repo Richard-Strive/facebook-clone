@@ -5,16 +5,22 @@ import { FaUserFriends } from "react-icons/fa";
 import { AiTwotoneShop } from "react-icons/ai";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
+import { connect } from "react-redux";
+
 import "./LeftSideBar.css";
 
-function LeftSideBar() {
+const mapStateToProps = (state) => state;
+
+function LeftSideBar({ user }) {
   return (
     <div className="left_container ml-1">
       <div className="left pl-2">
         <div className="profile_pic_icon ">
           <img src="https://source.unsplash.com/random" alt="profile_pic" />
         </div>
-        <h6 className="ml-2 mt-3 mb-3">Username</h6>
+        <h6 className="ml-2 mt-3 mb-3">
+          {user ? user.user_obj.firstName : " "}
+        </h6>
       </div>
       <div className="left pl-2">
         <AiFillInfoCircle className="icon" />
@@ -60,4 +66,4 @@ function LeftSideBar() {
   );
 }
 
-export default LeftSideBar;
+export default connect(mapStateToProps)(LeftSideBar);

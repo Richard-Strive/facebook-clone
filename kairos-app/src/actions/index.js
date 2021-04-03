@@ -14,6 +14,14 @@ export default function (data) {
   };
 }
 
+// to change the boolean value
+export default function (data) {
+  return {
+    type: SET_IS_SEL,
+    payload: data,
+  };
+}
+
 // function to recognize user
 export default function (data) {
   return {

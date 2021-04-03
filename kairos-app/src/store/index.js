@@ -1,6 +1,7 @@
 import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import userReducer from "../reducers/user";
 import selUserReducer from "../reducers/selUser";
+import isSelectedUserReducer from "../reducers/isSelectedUser";
 import thunk from "redux-thunk";
 
 const composedEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -12,11 +13,13 @@ const initialState = {
   selUser: {
     user_obj: "",
   },
+  isSelectedUser: false,
 };
 
 const bigReducer = combineReducers({
   user: userReducer,
   selUser: selUserReducer,
+  isSelectedUser: isSelectedUserReducer,
 });
 
 export default function configureStore() {

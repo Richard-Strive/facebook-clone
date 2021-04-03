@@ -23,9 +23,10 @@ const mapStateToProps = (state) => state;
 const mapDispatchToProps = (dispacth) => ({
   setUserData: (data) => dispacth({ type: "USER", payload: data }),
   setSelUser: (data) => dispacth({ type: "SEL_USER", payload: data }),
+  setIsSelected: (data) => dispacth({ type: "SET_IS_SEL", payload: data }),
 });
 
-function NavBar({ setUserData, user, selUser, setSelUser }) {
+function NavBar({ setUserData, user, selUser, setSelUser, setIsSelected }) {
   const [search, setSearch] = useState("");
   const [usersFound, setUsersFound] = useState([]);
   const [showBox, setShowBox] = useState(false);
@@ -47,8 +48,9 @@ function NavBar({ setUserData, user, selUser, setSelUser }) {
       if (response.ok) {
         const data = await response.json();
         setUsersFound(data);
+        setIsSelected(true);
         setShowBox(true);
-        console.log(data);
+        console.log(user);
       }
     } catch (err) {
       console.log("there is an error", err);
@@ -131,6 +133,12 @@ function NavBar({ setUserData, user, selUser, setSelUser }) {
     }, 500);
   };
 
+  const redirectHandler = () => {
+    setIsSelected(false);
+    window.location.reload();
+    history.push("/home/me");
+  };
+
   return (
     <div className="navbar_container">
       <div className="navbar_search_input">
@@ -182,12 +190,9 @@ function NavBar({ setUserData, user, selUser, setSelUser }) {
         </div>
       </div>
       <div className="navbar_right_icons">
-        <div
-          className="profile_redirect"
-          onClick={() => history.push("/home/me")}
-        >
+        <div className="profile_redirect" onClick={() => redirectHandler()}>
           <img src="https://source.unsplash.com/random" alt="" />
-          <h6 className="mt-1">Username</h6>
+          <h6 className="mt-1">{user ? user.user_obj.firstName : " "}</h6>
         </div>
         <div className="navbar_plus_icon_container">
           <FiPlus className="navbar_plus_icon" />
