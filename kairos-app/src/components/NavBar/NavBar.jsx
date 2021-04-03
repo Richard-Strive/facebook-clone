@@ -31,6 +31,7 @@ function NavBar({ setUserData, user, selUser, setSelUser, setIsSelected }) {
   const [search, setSearch] = useState("");
   const [usersFound, setUsersFound] = useState([]);
   const [showBox, setShowBox] = useState(false);
+  const [showFriendReq, setShowFriendReq] = useState(false);
 
   const history = useHistory();
   const token = localStorage.getItem("accessToken");
@@ -157,7 +158,7 @@ function NavBar({ setUserData, user, selUser, setSelUser, setIsSelected }) {
         </div>
         <hr />
       </div>
-      <button onClick={() => startAssistant()}>
+      <button className="arios_btn" onClick={() => startAssistant()}>
         <BiMicrophone className="navbar_arios_microphone_icon" />
       </button>
 
@@ -177,7 +178,10 @@ function NavBar({ setUserData, user, selUser, setSelUser, setIsSelected }) {
           <AiFillHome className="navbar_home_icon" />
         </div>
         <div className="navbar_friends_icon_container">
-          <FaUserFriends className="navbar_friends_icon" />
+          <FaUserFriends
+            className="navbar_friends_icon"
+            onClick={() => setShowFriendReq(!showFriendReq)}
+          />
           {user.user_obj !== "" ? (
             <div
               className="friend_notification_circle"
@@ -192,6 +196,29 @@ function NavBar({ setUserData, user, selUser, setSelUser, setIsSelected }) {
           ) : (
             ""
           )}
+
+          <div
+            className="navbar_friend_req_container"
+            style={{ display: `${showFriendReq ? "flex" : "none"}` }}
+          >
+            {user.user_obj !== ""
+              ? user.user_obj.friendRequest.map((req) => (
+                  <>
+                    <div className="profile_pic_icon ml-1 mt-2 mb-2">
+                      <img
+                        src="https://source.unsplash.com/random"
+                        alt="profile_pic"
+                      />
+                      Test
+                      <div>
+                        <button className="ignore_btn">Ignore</button>
+                        <button className="accept_btn">Accept</button>
+                      </div>
+                    </div>
+                  </>
+                ))
+              : ""}
+          </div>
         </div>
         <div className="navbar_video_icon_container">
           <MdOndemandVideo className="navbar_video_icon" />
