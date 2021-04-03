@@ -135,7 +135,6 @@ function NavBar({ setUserData, user, selUser, setSelUser, setIsSelected }) {
 
   const redirectHandler = () => {
     setIsSelected(false);
-    window.location.reload();
     history.push("/home/me");
   };
 

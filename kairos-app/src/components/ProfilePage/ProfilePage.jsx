@@ -58,6 +58,10 @@ function ProfilePage({
     getUser();
   }, []);
 
+  useEffect(() => {
+    if (isSelectedUser.isSelectedUser === false) window.location.reload();
+  }, [isSelectedUser]);
+
   return (
     <div className="profile_page_container">
       <div className="profile_page_header">
