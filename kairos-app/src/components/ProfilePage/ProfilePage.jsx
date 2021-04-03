@@ -32,6 +32,8 @@ function ProfilePage({
   const [openBg, setOpenBg] = useState(false);
   const [userTest, setUserTest] = useState(null);
 
+  const selUserId = selUser.user_obj._id;
+
   console.log(user);
 
   const token = localStorage.getItem("accessToken");
@@ -47,6 +49,27 @@ function ProfilePage({
       if (response.ok) {
         const data = await response.json();
         setUserData(data);
+        setLoading(false);
+      }
+    } catch (err) {
+      console.log("there is an error", err);
+    }
+  };
+
+  const sendFriendReq = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/user/friend-request/${selUserId}`,
+        {
+          method: "POST",
+          headers: new Headers({
+            Authorization: token,
+          }),
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
         setLoading(false);
       }
     } catch (err) {
@@ -135,7 +158,7 @@ function ProfilePage({
           </div>
 
           {isSelectedUser ? (
-            <button className="friend_req_btn">
+            <button className="friend_req_btn" onClick={() => sendFriendReq()}>
               <HiUserAdd className="friend_req_btn_icon" />
               Add Friend
             </button>

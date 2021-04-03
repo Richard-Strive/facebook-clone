@@ -177,6 +177,7 @@ function NavBar({ setUserData, user, selUser, setSelUser, setIsSelected }) {
         </div>
         <div className="navbar_friends_icon_container">
           <FaUserFriends className="navbar_friends_icon" />
+          <div className="friend_notification_circle">2</div>
         </div>
         <div className="navbar_video_icon_container">
           <MdOndemandVideo className="navbar_video_icon" />

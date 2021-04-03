@@ -119,6 +119,25 @@
   width: 28px;
 }
 
+.navbar_friends_icon_container {
+  position: relative;
+}
+
+.friend_notification_circle {
+  position: absolute;
+  top: 6px;
+  left: 52px;
+  height: 19px;
+  width: 19px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  background-color: #fa383e;
+}
+
 .navbar_friends_icon_container,
 .navbar_home_icon_container,
 .navbar_video_icon_container,
