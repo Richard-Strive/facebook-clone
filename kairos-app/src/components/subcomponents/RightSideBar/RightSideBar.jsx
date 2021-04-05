@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import "./RightSideBar.css";
 
 function RightSideBar() {
+  const user = useSelector((state) => state.user);
   return (
     <div className="right_container ml-1">
       <h5>Sponsored</h5>
@@ -32,24 +34,16 @@ function RightSideBar() {
       </div>
       <hr />
       <h5>Contacts</h5>
-      <div className="right pl-2">
-        <div className="profile_pic_icon ">
-          <img src="https://source.unsplash.com/random" alt="profile_pic" />
-        </div>
-        <h6 className="ml-2 mt-3">FriendName</h6>
-      </div>
-      <div className="right pl-2">
-        <div className="profile_pic_icon ">
-          <img src="https://source.unsplash.com/random" alt="profile_pic" />
-        </div>
-        <h6 className="ml-2 mt-3">FriendName</h6>
-      </div>
-      <div className="right pl-2">
-        <div className="profile_pic_icon">
-          <img src="https://source.unsplash.com/random" alt="profile_pic" />
-        </div>
-        <h6 className="ml-2 mt-3">FriendName</h6>
-      </div>
+      {user.user_obj !== " "
+        ? user.user_obj.friends.map((friend, index) => (
+            <div className="right pl-2" key={index}>
+              <div className="profile_pic_icon ">
+                <img src={friend.pfImage} alt="profile_pic" />
+              </div>
+              <h6 className="ml-2 mt-3">{friend.firstName}</h6>
+            </div>
+          ))
+        : ""}
     </div>
   );
 }

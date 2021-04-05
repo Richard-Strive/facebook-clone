@@ -3,13 +3,20 @@ import "./ProfilePagePost.css";
 import { Row, Col } from "react-bootstrap";
 import CreatePost from "../CreatePost/CreatePost";
 import DisplayedPost from "../DisplayedPost/DisplayedPost";
-import { connect } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 import Modal from "../Modal/Modal.jsx";
 
 const mapStateToProps = (state) => state;
 
-function ProfilePagePost({ user, isSelectedUser }) {
+function ProfilePagePost() {
   const [open, setOpen] = useState(false);
+
+  const user = useSelector((state) => state.user);
+  const selUser = useSelector((state) => state.selUser);
+
+  const isSelectedUser = useSelector(
+    (state) => state.isSelectedUser.isSelectedUser
+  );
 
   return (
     <div className="profile_page_post_container">
@@ -35,49 +42,21 @@ function ProfilePagePost({ user, isSelectedUser }) {
 
         <div className="friends_container mt-3 pt-3">
           <h6 className="ml-3">Friends</h6>
-          <div className="friends_container_row mt-4">
-            <Row className="mt-3">
-              <Col>
-                <img src="https://source.unsplash.com/random" alt="" />
-                <p>FriendName</p>
-              </Col>
-              <Col>
-                <img src="https://source.unsplash.com/random" alt="" />
-                <p>FriendName</p>
-              </Col>
-              <Col>
-                <img src="https://source.unsplash.com/random" alt="" />
-                <p>FriendName</p>
-              </Col>
-            </Row>
-            <Row className="mt-3">
-              <Col>
-                <img src="https://source.unsplash.com/random" alt="" />
-                <p>FriendName</p>
-              </Col>
-              <Col>
-                <img src="https://source.unsplash.com/random" alt="" />
-                <p>FriendName</p>
-              </Col>
-              <Col>
-                <img src="https://source.unsplash.com/random" alt="" />
-                <p>FriendName</p>
-              </Col>
-            </Row>
-            <Row className="mt-3">
-              <Col>
-                <img src="https://source.unsplash.com/random" alt="" />
-                <p>FriendName</p>
-              </Col>
-              <Col>
-                <img src="https://source.unsplash.com/random" alt="" />
-                <p>FriendName</p>
-              </Col>
-              <Col>
-                <img src="https://source.unsplash.com/random" alt="" />
-                <p>FriendName</p>
-              </Col>
-            </Row>
+          <div className="friends_container_wrap mt-4">
+            {isSelectedUser && selUser.user_obj !== ""
+              ? selUser.user_obj.friends.map((friend, index) => (
+                  <div className="text-center" key={index}>
+                    <img src={friend.pfImage} alt="profile_pic" />
+                    <p>{selUser.user_obj.firstName}</p>
+                  </div>
+                ))
+              : user.user_obj !== "" &&
+                user.user_obj.friends.map((friend, index) => (
+                  <div className="text-center" key={index}>
+                    <img src={friend.pfImage} alt="profile_pic" />
+                    <p>{user.user_obj.firstName}</p>
+                  </div>
+                ))}
           </div>
         </div>
       </div>
@@ -98,4 +77,4 @@ function ProfilePagePost({ user, isSelectedUser }) {
   );
 }
 
-export default connect(mapStateToProps)(ProfilePagePost);
+export default ProfilePagePost;

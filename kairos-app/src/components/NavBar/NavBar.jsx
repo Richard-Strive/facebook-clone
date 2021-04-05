@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispacth) => ({
   setIsSelected: (data) => dispacth({ type: "SET_IS_SEL", payload: data }),
 });
 
-function NavBar({ setUserData, user, selUser, setSelUser, setIsSelected }) {
+function NavBar({ user, setSelUser, setIsSelected }) {
   const [search, setSearch] = useState("");
   const [usersFound, setUsersFound] = useState([]);
   const [showBox, setShowBox] = useState(false);
@@ -53,6 +53,48 @@ function NavBar({ setUserData, user, selUser, setSelUser, setIsSelected }) {
         setIsSelected(true);
         setShowBox(true);
         console.log(user);
+      }
+    } catch (err) {
+      console.log("there is an error", err);
+    }
+  };
+
+  const acceptRequest = async (friendReqId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/user/friend-accept/${friendReqId}`,
+        {
+          method: "POST",
+          headers: new Headers({
+            Authorization: token,
+          }),
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setUsersFound(data);
+        console.log(data);
+      }
+    } catch (err) {
+      console.log("there is an error", err);
+    }
+  };
+
+  const ignoreRequest = async (friendReqId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/user/friend-ignore/${friendReqId}`,
+        {
+          method: "POST",
+          headers: new Headers({
+            Authorization: token,
+          }),
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setUsersFound(data);
+        console.log(data);
       }
     } catch (err) {
       console.log("there is an error", err);
@@ -205,14 +247,21 @@ function NavBar({ setUserData, user, selUser, setSelUser, setIsSelected }) {
               ? user.user_obj.friendRequest.map((req) => (
                   <>
                     <div className="profile_pic_icon ml-1 mt-2 mb-2">
-                      <img
-                        src="https://source.unsplash.com/random"
-                        alt="profile_pic"
-                      />
-                      Test
+                      <img src={req.pfImage} alt="profile_pic" />
+                      {req.firstName}
                       <div>
-                        <button className="ignore_btn">Ignore</button>
-                        <button className="accept_btn">Accept</button>
+                        <button
+                          className="ignore_btn"
+                          onClick={() => ignoreRequest(req._id)}
+                        >
+                          Ignore
+                        </button>
+                        <button
+                          className="accept_btn"
+                          onClick={() => acceptRequest(req._id)}
+                        >
+                          Accept
+                        </button>
                       </div>
                     </div>
                   </>
@@ -232,7 +281,7 @@ function NavBar({ setUserData, user, selUser, setSelUser, setIsSelected }) {
       </div>
       <div className="navbar_right_icons">
         <div className="profile_redirect" onClick={() => redirectHandler()}>
-          <img src="https://source.unsplash.com/random" alt="" />
+          <img src={user.user_obj.pfImage} alt="" />
           <h6 className="mt-1">{user ? user.user_obj.firstName : " "}</h6>
         </div>
         <div className="navbar_plus_icon_container">

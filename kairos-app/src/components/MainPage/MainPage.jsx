@@ -5,20 +5,6 @@ import RightSideBar from "../subcomponents/RightSideBar/RightSideBar";
 import CreatePost from "../subcomponents/CreatePost/CreatePost";
 import DisplayedPost from "../subcomponents/DisplayedPost/DisplayedPost";
 import "./MainPage.css";
-// const url = "http://localhost:5000";
-
-// const io = require("socket.io-client");
-// const url = "https://intense-thicket-20816.herokuapp.com/";
-// const connOpt = {
-//   transports: ["websocket", "polling"],
-// };
-// const socket = io(url, { autoConnect: false }, connOpt);
-
-/* 
-function for emiting my id and updated to socket id of my self on any connection 
-socket.connect();
-    socket.emit("my-id", req.user.id);
-*/
 
 function MainPage() {
   return (

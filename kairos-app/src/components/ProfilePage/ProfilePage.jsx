@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-
 import "./ProfilePage.css";
+
 import { MdPhotoCamera } from "react-icons/md";
 import { FaPen } from "react-icons/fa";
 import { HiDotsHorizontal } from "react-icons/hi";
@@ -8,33 +8,26 @@ import { BsFillEyeFill } from "react-icons/bs";
 import { GoSearch } from "react-icons/go";
 import { BsFillCaretDownFill } from "react-icons/bs";
 import { HiUserAdd } from "react-icons/hi";
+
 import Modal from "../subcomponents/Modal/Modal";
-
 import ProfilePagePost from "../subcomponents/ProfilePagePost/ProfilePagePost";
-import { connect } from "react-redux";
 
-const mapStateToProps = (state) => state;
+import { useSelector, useDispatch } from "react-redux";
 
-const mapDispatchToProps = (dispacth) => ({
-  setUserData: (data) => dispacth({ type: "USER", payload: data }),
-  setIsSelected: (data) => dispacth({ type: "SET_IS_SEL", payload: data }),
-});
-
-function ProfilePage({
-  setUserData,
-  selUser,
-  isSelectedUser,
-  setIsSelected,
-  user,
-}) {
+function ProfilePage() {
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [openBg, setOpenBg] = useState(false);
-  const [userTest, setUserTest] = useState(null);
+
+  const user = useSelector((state) => state.user);
+  const selUser = useSelector((state) => state.selUser);
+  const isSelectedUser = useSelector(
+    (state) => state.isSelectedUser.isSelectedUser
+  );
+
+  const dispatch = useDispatch();
 
   const selUserId = selUser.user_obj._id;
-
-  console.log(user);
 
   const token = localStorage.getItem("accessToken");
 
@@ -48,7 +41,7 @@ function ProfilePage({
       });
       if (response.ok) {
         const data = await response.json();
-        setUserData(data);
+        dispatch({ type: "USER", payload: data });
         setLoading(false);
       }
     } catch (err) {
@@ -81,20 +74,24 @@ function ProfilePage({
     getUser();
   }, []);
 
-  useEffect(() => {
-    if (isSelectedUser.isSelectedUser === false) window.location.reload();
-  }, [isSelectedUser]);
-
   return (
     <div className="profile_page_container">
       <div className="profile_page_header">
         <div className="profile_page_background_img">
           <img
-            src={loading ? " " : user.user_obj.bgImage}
+            src={
+              !loading && isSelectedUser
+                ? selUser.user_obj.bgImage
+                : user.user_obj.bgImage
+            }
             alt="background_image"
           />
           <img
-            src={loading ? " " : user.user_obj.pfImage}
+            src={
+              !loading && isSelectedUser
+                ? selUser.user_obj.pfImage
+                : user.user_obj.pfImage
+            }
             alt="profile_image"
           />
           <div style={{ display: `${isSelectedUser ? "none" : "block"}` }}>
@@ -120,7 +117,7 @@ function ProfilePage({
         </div>
         <h1 className="mt-3">
           {loading
-            ? "...loading"
+            ? "Wait a second..."
             : `${
                 isSelectedUser
                   ? selUser.user_obj.firstName
@@ -188,4 +185,4 @@ function ProfilePage({
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
+export default ProfilePage;

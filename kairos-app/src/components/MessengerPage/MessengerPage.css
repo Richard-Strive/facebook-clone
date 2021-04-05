@@ -91,6 +91,7 @@
 }
 .messanger_single_friend:hover {
   background-color: #e4e6eb;
+  cursor: pointer;
 }
 .messanger_single_friend > img {
   height: 56px;

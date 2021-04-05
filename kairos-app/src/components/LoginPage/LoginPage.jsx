@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import "./LoginPage.css";
 
-function LoginPage() {
+function LoginPage({ socket }) {
   const [open, setOpen] = useState(false);
 
   const [email, setEmail] = useState("");
@@ -43,6 +43,8 @@ function LoginPage() {
           setPassword("");
           setEmail("");
           history.push("/home/me");
+
+          socket.connect();
         }, 900);
       } else {
         setIsRegistered(!isRegistered);
@@ -60,6 +62,7 @@ function LoginPage() {
         setOpen={setOpen}
         isVerify={true}
         setLoading={setLoading}
+        socket={socket}
       />
       <div className="login_page_logo_container">
         <div className="login_page_logo">

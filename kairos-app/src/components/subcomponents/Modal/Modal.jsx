@@ -24,6 +24,7 @@ function Modal({
   isPost,
   isProfile,
   isBackground,
+  socket,
 }) {
   const WebCamRef = useRef(null);
 
@@ -169,6 +170,7 @@ function Modal({
             getUserTokens();
             setTimeout(() => {
               history.push("/home/me");
+              socket.connect();
             }, 300);
           }
         }
