@@ -14,6 +14,14 @@ export default function (data) {
   };
 }
 
+// function to set array of connected users(socket.io)
+export default function (data) {
+  return {
+    type: SET_CONNECTED_USERS,
+    payload: data,
+  };
+}
+
 // to change the boolean value
 export default function (data) {
   return {

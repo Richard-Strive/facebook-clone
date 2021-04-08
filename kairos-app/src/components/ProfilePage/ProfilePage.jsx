@@ -8,46 +8,30 @@ import { BsFillEyeFill } from "react-icons/bs";
 import { GoSearch } from "react-icons/go";
 import { BsFillCaretDownFill } from "react-icons/bs";
 import { HiUserAdd } from "react-icons/hi";
+import { getUser } from "../tools";
 
 import Modal from "../subcomponents/Modal/Modal";
 import ProfilePagePost from "../subcomponents/ProfilePagePost/ProfilePagePost";
 
 import { useSelector, useDispatch } from "react-redux";
 
-function ProfilePage() {
+function ProfilePage({ socket }) {
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [openBg, setOpenBg] = useState(false);
 
   const user = useSelector((state) => state.user);
   const selUser = useSelector((state) => state.selUser);
-  const isSelectedUser = useSelector(
-    (state) => state.isSelectedUser.isSelectedUser
-  );
+  const isSelectedUser = useSelector((state) => state.isSelectedUser);
+  // const isSelectedUser = useSelector(
+  //   (state) => state.isSelectedUser.isSelectedUser
+  // );
 
   const dispatch = useDispatch();
 
   const selUserId = selUser.user_obj._id;
 
   const token = localStorage.getItem("accessToken");
-
-  const getUser = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/user/me", {
-        method: "GET",
-        headers: new Headers({
-          Authorization: token,
-        }),
-      });
-      if (response.ok) {
-        const data = await response.json();
-        dispatch({ type: "USER", payload: data });
-        setLoading(false);
-      }
-    } catch (err) {
-      console.log("there is an error", err);
-    }
-  };
 
   const sendFriendReq = async () => {
     try {
@@ -71,7 +55,14 @@ function ProfilePage() {
   };
 
   useEffect(() => {
-    getUser();
+    setLoading(false);
+
+    socket.on("list", (data) => {
+      console.log(data);
+      dispatch({ type: "SET_CONNECTED_USERS", payload: data });
+    });
+
+    console.log(user.user_obj._id);
   }, []);
 
   return (

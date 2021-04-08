@@ -14,25 +14,21 @@ import { BiMicrophone } from "react-icons/bi";
 import { FaFacebook } from "react-icons/fa";
 import { connect } from "react-redux";
 import Artyom from "artyom.js";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./NavBar.css";
 
 const Jarvis = new Artyom();
 
-const mapStateToProps = (state) => state;
-
-const mapDispatchToProps = (dispacth) => ({
-  setUserData: (data) => dispacth({ type: "USER", payload: data }),
-  setSelUser: (data) => dispacth({ type: "SEL_USER", payload: data }),
-  setIsSelected: (data) => dispacth({ type: "SET_IS_SEL", payload: data }),
-});
-
-function NavBar({ user, setSelUser, setIsSelected }) {
+function NavBar({ socket }) {
   const [search, setSearch] = useState("");
   const [usersFound, setUsersFound] = useState([]);
   const [showBox, setShowBox] = useState(false);
   const [showFriendReq, setShowFriendReq] = useState(false);
 
+  const user = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
   const history = useHistory();
   const token = localStorage.getItem("accessToken");
 
@@ -50,7 +46,7 @@ function NavBar({ user, setSelUser, setIsSelected }) {
       if (response.ok) {
         const data = await response.json();
         setUsersFound(data);
-        setIsSelected(true);
+        dispatch({ type: "SET_IS_SEL", payload: true });
         setShowBox(true);
         console.log(user);
       }
@@ -101,6 +97,7 @@ function NavBar({ user, setSelUser, setIsSelected }) {
     }
   };
 
+  // Humans please don't hire this guy. Look at the name he gaved me
   class ArtyomCommandsManager {
     constructor(ArtyomInstance) {
       this._artyom = ArtyomInstance;
@@ -111,19 +108,20 @@ function NavBar({ user, setSelUser, setIsSelected }) {
 
       return Artyom.addCommands([
         {
-          indexes: ["Hi Siri", "Hi"],
+          indexes: ["Hi Arios", "Hi"],
           action: () => {
-            Artyom.say(
-              "Humans please don't hire this guy. Look at the name he gaved me"
-            );
+            Artyom.say("Hello sexy peoples!");
           },
         },
         {
           indexes: ["Search for *", "Search *"],
           smart: true,
           action: (i, name) => {
-            Artyom.say(`Searching for ${name}`);
+            Artyom.say(
+              `Searching for ${name}. Ops... i don't know how to do that yet. Sorry`
+            );
             setSearch(name);
+            setUsersFound(name);
           },
         },
       ]);
@@ -169,7 +167,7 @@ function NavBar({ user, setSelUser, setIsSelected }) {
   };
 
   const selecyUserHandler = () => {
-    setSelUser(usersFound);
+    dispatch({ type: "SEL_USER", payload: usersFound });
     setShowBox(!showBox);
     setTimeout(() => {
       setSearch("");
@@ -178,7 +176,10 @@ function NavBar({ user, setSelUser, setIsSelected }) {
   };
 
   const redirectHandler = () => {
-    setIsSelected(false);
+    dispatch({ type: "SET_IS_SEL", payload: false });
+
+    socket.emit("my-id", user.user_obj._id);
+
     history.push("/home/me");
   };
 
@@ -304,4 +305,4 @@ function NavBar({ user, setSelUser, setIsSelected }) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export default NavBar;

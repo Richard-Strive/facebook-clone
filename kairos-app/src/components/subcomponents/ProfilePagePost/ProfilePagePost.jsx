@@ -6,17 +6,15 @@ import DisplayedPost from "../DisplayedPost/DisplayedPost";
 import { connect, useSelector, useDispatch } from "react-redux";
 import Modal from "../Modal/Modal.jsx";
 
-const mapStateToProps = (state) => state;
-
 function ProfilePagePost() {
   const [open, setOpen] = useState(false);
 
   const user = useSelector((state) => state.user);
   const selUser = useSelector((state) => state.selUser);
 
-  const isSelectedUser = useSelector(
-    (state) => state.isSelectedUser.isSelectedUser
-  );
+  console.log("the selected userrrrrr--->", selUser);
+
+  const isSelectedUser = useSelector((state) => state.isSelectedUser);
 
   return (
     <div className="profile_page_post_container">
@@ -46,15 +44,18 @@ function ProfilePagePost() {
             {isSelectedUser && selUser.user_obj !== ""
               ? selUser.user_obj.friends.map((friend, index) => (
                   <div className="text-center" key={index}>
-                    <img src={friend.pfImage} alt="profile_pic" />
-                    <p>{selUser.user_obj.firstName}</p>
+                    <img
+                      src="https://source.unsplash.com/random"
+                      alt="profile_pic"
+                    />
+                    <p>{friend.firstName}</p>
                   </div>
                 ))
               : user.user_obj !== "" &&
                 user.user_obj.friends.map((friend, index) => (
                   <div className="text-center" key={index}>
                     <img src={friend.pfImage} alt="profile_pic" />
-                    <p>{user.user_obj.firstName}</p>
+                    <p>{friend.firstName}</p>
                   </div>
                 ))}
           </div>

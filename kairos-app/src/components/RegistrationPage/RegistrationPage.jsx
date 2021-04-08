@@ -54,7 +54,7 @@ function Registration() {
           </h2>
         </div>
         <div className="registration_page_login_btn">
-          <button onClick={() => history.push("/login")}>Login In</button>
+          <button onClick={() => history.push("/login")}>Log In</button>
         </div>
       </div>
       <div className="registration_page_content_container">

@@ -1,15 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Form } from "react-bootstrap";
 import Webcam from "react-webcam";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { getUser } from "../../tools";
 import "./Modal.css";
-
-const mapStateToProps = (state) => state;
-
-const mapDispatchToProps = (dispacth) => ({
-  setUserData: (data) => dispacth({ type: "USER", payload: data }),
-});
 
 function Modal({
   open,
@@ -18,7 +13,6 @@ function Modal({
   setOpen,
   isVerify,
   isRegister,
-  user,
   setLoading,
   setUserData,
   isPost,
@@ -35,6 +29,9 @@ function Modal({
   const history = useHistory();
 
   const token = localStorage.getItem("accessToken");
+
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -86,7 +83,9 @@ function Modal({
       });
       if (response.ok) {
         const data = await response.json();
+
         console.log(data);
+
         localStorage.setItem("accessToken", data.token);
       }
     } catch (err) {
@@ -148,7 +147,7 @@ function Modal({
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        console.log("this is dat---->", data);
 
         if (data.Errors) {
           alert(`Error ${data.Errors[0].Message}`);
@@ -166,12 +165,15 @@ function Modal({
           if (data.images[0].transaction.status == "success") {
             setLoading(false);
             setUserId(data.images[0].transaction.subject_id);
+            console.log(data.images[0].transaction.subject_id);
 
             getUserTokens();
             setTimeout(() => {
-              history.push("/home/me");
+              const token = localStorage.getItem("accessToken");
+              getUser(token, setLoader, dispatch);
+              history.push("/home/main");
               socket.connect();
-            }, 300);
+            }, 400);
           }
         }
       }
@@ -228,4 +230,4 @@ function Modal({
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default Modal;

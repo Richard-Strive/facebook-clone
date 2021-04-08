@@ -15,17 +15,22 @@ import { AiTwotoneLike } from "react-icons/ai";
 import { FaStickyNote } from "react-icons/fa";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
+import { getMessages, getUser } from "../tools";
+
 function MessengerPage({ socket }) {
   const [selectedFriend, setSelectedFriend] = useState(null);
   const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState([]);
 
   const user = useSelector((state) => state.user);
+  const connectedUser = useSelector((state) => state.connectedUser);
+  const dispatch = useDispatch();
+
+  const token = localStorage.getItem("accessToken");
 
   const selectFriend = (frd) => {
     setSelectedFriend(frd);
   };
-
-  socket.on("private message", (data) => console.log(data));
 
   const messageHandler = () => {
     socket.emit("private message", {
@@ -34,6 +39,8 @@ function MessengerPage({ socket }) {
       sender: user.user_obj.firstName,
       receiver: selectedFriend.firstName,
     });
+
+    setMessage("");
   };
 
   const handleKeyPress = (e) => {
@@ -43,8 +50,24 @@ function MessengerPage({ socket }) {
   };
 
   useEffect(() => {
-    socket.emit("my-id", user.user_obj._id);
+    getMessages(token, setMessages);
+
+    getUser(token, null, dispatch);
   }, []);
+
+  useEffect(() => {
+    getUser(token, null, dispatch);
+    console.log("A user connected");
+  }, [connectedUser]);
+
+  useEffect(() => {
+    getMessages(token, setMessages);
+    socket.on("private message", (data) =>
+      setMessages((data) => messages.concat(data))
+    );
+
+    console.log("BLING");
+  }, [messages.length]);
 
   return (
     <div className="messenger_page_container">
@@ -97,20 +120,26 @@ function MessengerPage({ socket }) {
         )}
 
         <div className="messsanger_current_chat_content">
-          {selectedFriend && (
-            <div className="single_message ml-1 mt-2">
-              <img src={selectedFriend.pfImage} alt="user_photo" />
-              <div className="single_message_text">
-                <p>Hi i'm your friend</p>
-              </div>
-            </div>
-          )}
-          <div className="single_message_me mt-2 mr-2">
-            <div className="single_message_text">
-              <p>I'm the owner of the account</p>
-            </div>
-            <img src={user.user_obj.pfImage} alt="profile_pic" />
-          </div>
+          {selectedFriend &&
+            messages.map((msg, index) => {
+              return msg.sender == selectedFriend.firstName ? (
+                <div className="single_message ml-1 mt-2" key={index}>
+                  <img src={selectedFriend.pfImage} alt="user_photo" />
+                  <div className="single_message_text">
+                    <p>{msg.text}</p>
+                  </div>
+                </div>
+              ) : (
+                msg.sender == user.user_obj.firstName && (
+                  <div className="single_message_me mt-2 mr-2" key={index}>
+                    <div className="single_message_text">
+                      <p>{msg.text}</p>
+                    </div>
+                    <img src={user.user_obj.pfImage} alt="profile_pic" />
+                  </div>
+                )
+              );
+            })}
         </div>
         <div className="messsanger_current_chat_input">
           <BsFillPlusCircleFill className="current_chat_input_plus_icon" />
@@ -121,6 +150,7 @@ function MessengerPage({ socket }) {
             <input
               type="text"
               placeholder=" Aa"
+              value={message}
               onChange={(e) => setMessage(e.target.value)}
               onKeyDown={(e) => handleKeyPress(e)}
             />

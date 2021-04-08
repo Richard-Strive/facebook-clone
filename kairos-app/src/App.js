@@ -35,7 +35,10 @@ function App() {
           path="/login"
           render={(props) => <LoginPage {...props} socket={socket} />}
         />
-        <Route path="/home" render={(props) => <NavBar {...props} />} />
+        <Route
+          path="/home"
+          render={(props) => <NavBar {...props} socket={socket} />}
+        />
         <Switch>
           <Route
             exact
@@ -50,7 +53,7 @@ function App() {
           <Route
             exact
             path="/home/me"
-            render={(props) => <ProfilePage {...props} />}
+            render={(props) => <ProfilePage {...props} socket={socket} />}
           />
           <Route
             exact

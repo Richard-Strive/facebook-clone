@@ -34,7 +34,7 @@ function RightSideBar() {
       </div>
       <hr />
       <h5>Contacts</h5>
-      {user.user_obj !== " "
+      {user.user_obj !== ""
         ? user.user_obj.friends.map((friend, index) => (
             <div className="right pl-2" key={index}>
               <div className="profile_pic_icon ">

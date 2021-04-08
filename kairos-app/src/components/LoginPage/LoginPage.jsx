@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Modal from "../subcomponents/Modal/Modal";
 import { Form, Spinner } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-
+import { useSelector, useDispatch } from "react-redux";
+import { getUser } from "../tools";
 import "./LoginPage.css";
 
 function LoginPage({ socket }) {
@@ -12,6 +13,9 @@ function LoginPage({ socket }) {
   const [password, setPassword] = useState("");
   const [isRegistered, setIsRegistered] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   const history = useHistory();
 
@@ -39,12 +43,16 @@ function LoginPage({ socket }) {
         localStorage.setItem("accessToken", data.token);
 
         setTimeout(() => {
-          setLoading(false);
           setPassword("");
           setEmail("");
-          history.push("/home/me");
 
+          const token = localStorage.getItem("accessToken");
+          getUser(token, setLoading, dispatch);
+
+          // CONNECT
           socket.connect();
+
+          history.push("/home/main");
         }, 900);
       } else {
         setIsRegistered(!isRegistered);
