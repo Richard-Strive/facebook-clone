@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { AiFillHome } from "react-icons/ai";
@@ -110,7 +110,35 @@ function NavBar({ socket }) {
         {
           indexes: ["Hi Arios", "Hi"],
           action: () => {
-            Artyom.say("Hello sexy peoples!");
+            Artyom.say("Nice to see you again... What you want to do today?");
+          },
+        },
+        {
+          indexes: ["Open messages", "messages", "message"],
+          action: () => {
+            Artyom.say("Openin your personal messages");
+            history.push("/home/messages");
+          },
+        },
+        {
+          indexes: ["Open home page", "home", "home page"],
+          action: () => {
+            Artyom.say("Openin home page");
+            history.push("/home/main");
+          },
+        },
+        {
+          indexes: ["Open profile page", "profile", "profile page"],
+          action: () => {
+            Artyom.say("Openin profile page");
+            history.push("/home/me");
+          },
+        },
+        {
+          indexes: ["Log out", "log"],
+          action: () => {
+            Artyom.say("Loging out. See you soon.");
+            history.push("/login");
           },
         },
         {
@@ -143,7 +171,7 @@ function NavBar({ socket }) {
       .then(() => {
         // Display loaded commands in the console
         // console.log(Jarvis.getAvailableCommands());
-        // Jarvis.say("Welcome Manuel");
+        // Jarvis.say(`Welcome. What can i do for you?`);
       })
       .catch((err) => {
         console.error("Oopsy daisy, this shouldn't happen !", err);
@@ -182,6 +210,12 @@ function NavBar({ socket }) {
 
     history.push("/home/me");
   };
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     startAssistant();
+  //   }, 300);
+  // }, []);
 
   return (
     <div className="navbar_container">

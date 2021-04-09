@@ -140,7 +140,6 @@
 .single_message {
   width: 400px;
   height: wrap;
-
   display: flex;
 }
 
@@ -154,6 +153,7 @@
 .single_message > .single_message_text {
   width: wrap;
   height: wrap;
+  padding: 10px;
   background-color: #e4e6eb;
   border-radius: 10px;
   margin-left: 5px;
