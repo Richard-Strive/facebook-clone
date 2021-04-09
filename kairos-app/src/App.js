@@ -15,9 +15,8 @@ import MessengerPage from "./components/MessengerPage/MessengerPage";
 import LoginPage from "./components/LoginPage/LoginPage";
 
 import io from "socket.io-client";
-// const url = "https://intense-thicket-20816.herokuapp.com/";
 
-const url = "http://localhost:5000";
+const url = process.env.REACT_APP_SOCKET_IO_URL;
 
 const connOpt = {
   transports: ["websocket", "polling"],

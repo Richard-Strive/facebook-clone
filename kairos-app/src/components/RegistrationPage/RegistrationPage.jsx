@@ -16,7 +16,7 @@ function Registration() {
   const handleSubmit = async (e) => {
     e.preventDefault(e);
     try {
-      const response = await fetch("http://localhost:5000/user/registration", {
+      const response = await fetch(process.env.REACT_APP_REGISTRATION_URL, {
         method: "POST",
         headers: {
           Accept: "application/json",

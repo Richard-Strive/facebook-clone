@@ -1,6 +1,6 @@
 export const getUser = async (tk, setLoading, dispatch) => {
   try {
-    const response = await fetch("http://localhost:5000/user/me", {
+    const response = await fetch(process.env.REACT_APP_GET_USER_URL, {
       method: "GET",
       headers: new Headers({
         Authorization: tk,
@@ -22,7 +22,7 @@ export const getUser = async (tk, setLoading, dispatch) => {
 
 export const getMessages = async (tk, setMessages) => {
   try {
-    const response = await fetch("http://localhost:5000/user/me/messages", {
+    const response = await fetch(process.env.REACT_APP_GET_ALL_MESSAGES_URL, {
       method: "GET",
       headers: new Headers({
         Authorization: tk,

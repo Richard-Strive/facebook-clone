@@ -23,9 +23,6 @@ function ProfilePage({ socket }) {
   const user = useSelector((state) => state.user);
   const selUser = useSelector((state) => state.selUser);
   const isSelectedUser = useSelector((state) => state.isSelectedUser);
-  // const isSelectedUser = useSelector(
-  //   (state) => state.isSelectedUser.isSelectedUser
-  // );
 
   const dispatch = useDispatch();
 
@@ -36,7 +33,7 @@ function ProfilePage({ socket }) {
   const sendFriendReq = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/user/friend-request/${selUserId}`,
+        process.env.REACT_APP_SEND_FRIEND_REQUEST_URL + selUserId,
         {
           method: "POST",
           headers: new Headers({
@@ -88,7 +85,7 @@ function ProfilePage({ socket }) {
           <div style={{ display: `${isSelectedUser ? "none" : "block"}` }}>
             <Modal open={open} setOpen={setOpen} isProfile={true} />
             <MdPhotoCamera
-              className="profile_page_photo_icon"
+              className="profile_page_photo_icon fix"
               onClick={() => setOpen(!open)}
             />
 

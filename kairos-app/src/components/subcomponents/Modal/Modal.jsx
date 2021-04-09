@@ -42,10 +42,10 @@ function Modal({
     let url = "";
 
     if (isProfile) {
-      url = "http://localhost:5000/user/me/add-profile-image";
+      url = process.env.REACT_APP_ADD_PROFILE_IMAGE;
     }
     if (isBackground) {
-      url = "http://localhost:5000/user/me/add-background-image";
+      url = process.env.REACT_APP_ADD_BACKGROUND_IMAGE;
     }
 
     console.log("the url-->", url);
@@ -71,7 +71,7 @@ function Modal({
   const getUserTokens = async () => {
     setLoader(true);
     try {
-      const response = await fetch("http://localhost:5000/user/login", {
+      const response = await fetch(process.env.REACT_APP_LOGIN_URL, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -95,20 +95,17 @@ function Modal({
 
   const setFaceId = async (picture) => {
     try {
-      const response = await fetch(
-        "http://localhost:5000/user/me/add-face-id-image",
-        {
-          method: "PUT",
-          headers: new Headers({
-            Authorization: token,
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          }),
-          body: JSON.stringify({
-            faceId: picture,
-          }),
-        }
-      );
+      const response = await fetch(process.env.REACT_APP_SET_USER_FACE_ID, {
+        method: "PUT",
+        headers: new Headers({
+          Authorization: token,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        }),
+        body: JSON.stringify({
+          faceId: picture,
+        }),
+      });
       if (response.ok) {
         const data = await response.json();
         setUserData(data);
@@ -125,7 +122,9 @@ function Modal({
     setOpen(!open);
 
     try {
-      const url = `https://api.kairos.com/${isVerify ? "recognize" : "enroll"}`;
+      const url =
+        process.env.REACT_APP_KAIROS_BASE_URL +
+        `${isVerify ? "recognize" : "enroll"}`;
       console.log(url);
 
       if (!isVerify) {

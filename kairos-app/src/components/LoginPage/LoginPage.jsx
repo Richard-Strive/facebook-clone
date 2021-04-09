@@ -25,7 +25,7 @@ function LoginPage({ socket }) {
     e.preventDefault(e);
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:5000/user/login", {
+      const response = await fetch(process.env.REACT_APP_LOGIN_URL, {
         method: "POST",
         headers: {
           Accept: "application/json",

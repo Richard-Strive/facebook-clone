@@ -27,7 +27,7 @@ function NavBar({ socket }) {
   const [showFriendReq, setShowFriendReq] = useState(false);
 
   const user = useSelector((state) => state.user);
-
+  // `http://localhost:5000/user/finduser/${search}`,
   const dispatch = useDispatch();
   const history = useHistory();
   const token = localStorage.getItem("accessToken");
@@ -35,7 +35,7 @@ function NavBar({ socket }) {
   const searchUser = async (search) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/user/finduser/${search}`,
+        `https://intense-thicket-20816.herokuapp.com/user/finduser/${search}`,
         {
           method: "GET",
           headers: new Headers({
@@ -58,7 +58,7 @@ function NavBar({ socket }) {
   const acceptRequest = async (friendReqId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/user/friend-accept/${friendReqId}`,
+        process.env.REACT_APP_ACCEPT_URL + friendReqId,
         {
           method: "POST",
           headers: new Headers({
@@ -79,7 +79,7 @@ function NavBar({ socket }) {
   const ignoreRequest = async (friendReqId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/user/friend-ignore/${friendReqId}`,
+        process.env.REACT_APP_IGNORE_URL + friendReqId,
         {
           method: "POST",
           headers: new Headers({
