@@ -74,21 +74,30 @@ function ProfilePage({ socket }) {
             }
             alt="background_image"
           />
-          <img
-            src={
-              !loading && isSelectedUser
-                ? selUser.user_obj.pfImage
-                : user.user_obj.pfImage
-            }
-            alt="profile_image"
-          />
-          <div style={{ display: `${isSelectedUser ? "none" : "block"}` }}>
-            <Modal open={open} setOpen={setOpen} isProfile={true} />
-            <MdPhotoCamera
-              className="profile_page_photo_icon fix"
-              onClick={() => setOpen(!open)}
-            />
 
+          <div className="profile_page_pic_container">
+            <img
+              src={
+                !loading && isSelectedUser
+                  ? selUser.user_obj.pfImage
+                  : user.user_obj.pfImage
+              }
+              alt="profile_image"
+            />
+            <div
+              className="profile_page_photo_icon"
+              style={{ display: `${isSelectedUser ? "none" : "block"}` }}
+            >
+              <MdPhotoCamera
+                className="ml-2 mt-1"
+                onClick={() => setOpen(!open)}
+              />
+
+              <Modal open={open} setOpen={setOpen} isProfile={true} />
+            </div>
+          </div>
+
+          <div style={{ display: `${isSelectedUser ? "none" : "block"}` }}>
             <div className="background_image_edit_icon">
               <Modal
                 openBg={openBg}
@@ -96,13 +105,18 @@ function ProfilePage({ socket }) {
                 isBackground={true}
               />
               <MdPhotoCamera
-                className="profile_page_photo_icon ml-1"
+                className="ml-2  mr-1"
                 onClick={() => setOpenBg(!openBg)}
               />
+              {/* <MdPhotoCamera
+                className="profile_page_photo_icon ml-1"
+                onClick={() => setOpenBg(!openBg)}
+              /> */}
               Edit Cover Photo
             </div>
           </div>
         </div>
+
         <h1 className="mt-3">
           {loading
             ? "Wait a second..."
