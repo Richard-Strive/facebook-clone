@@ -5,6 +5,13 @@
 /.pnp
 .pnp.js
 
+# non usefull folders/files
+/src/components/KairosRegEnv
+/src/components/KairosVerifyEnv
+/src/ArtyomCommands.js
+
+
+
 # testing
 /coverage
 
