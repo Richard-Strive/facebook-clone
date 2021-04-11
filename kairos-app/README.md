@@ -40,6 +40,8 @@ OR
 
 · Open messages or messages
 
+· Open profile or profile
+
 · Goodbye
 
 º other commands are coming soon 💪
