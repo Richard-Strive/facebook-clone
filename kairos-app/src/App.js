@@ -13,6 +13,7 @@ import RegistrationPage from "./components/RegistrationPage/RegistrationPage";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import MessengerPage from "./components/MessengerPage/MessengerPage";
 import LoginPage from "./components/LoginPage/LoginPage";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 import io from "socket.io-client";
 
@@ -25,6 +26,7 @@ const connOpt = {
 const socket = io(url, { autoConnect: false }, connOpt);
 
 function App() {
+  const token = localStorage.getItem("accessToken");
   return (
     <>
       <Router>
@@ -39,22 +41,24 @@ function App() {
           render={(props) => <NavBar {...props} socket={socket} />}
         />
         <Switch>
-          <Route
+          <ProtectedRoute
             exact
             path="/home/main"
-            render={(props) => <MainPage {...props} />}
+            component={<MainPage />}
+            token={token}
           />
-          <Route
+
+          <ProtectedRoute
             exact
             path="/home/vocal"
             render={(props) => <VocalAssisten {...props} />}
           />
-          <Route
+          <ProtectedRoute
             exact
             path="/home/me"
             render={(props) => <ProfilePage {...props} socket={socket} />}
           />
-          <Route
+          <ProtectedRoute
             exact
             path="/home/messages"
             render={(props) => <MessengerPage {...props} socket={socket} />}
