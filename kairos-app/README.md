@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# HEEEELLO AND WELCOME TO MY SOLO COPSTONE PROJECT 🚀
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The solo capstone was the best challenge ever at Strive School.🤩
 
-## Available Scripts
+Developing this project was an opportunity to enhance my problem-solving skills: my main goal.
 
-In the project directory, you can run:
+Probably the approach that I have in my codebase to solve some issues is not the best,i was tailoring every line of code from an initial thought, but as I said above... Problem-solving was my goal.
 
-### `npm start`
+### Let's get into it
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+CLICK HERE FOR THE LIVE VERSION https://murmuring-woodland-01068.herokuapp.com/
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+OR
 
-### `npm test`
+- CD FACEBOOK-CLONE
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- NPM I
 
-### `npm run build`
+- NPM START
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## What we have :
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- FACE-LOGIN
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- VOCAL ASSISTENT, ARIOS.
 
-### `npm run eject`
+- CHAT ENVIROMENT
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- SWEET BUG'S HERE AND THERE (WORKING ON THEM AS YOU ARE READING THIS)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## What to do and what not to have the best experience
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#Arios
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Don't ask Arios's personal life information 🤣 he may ignore you... and YES, he is engaged with Siri.
 
-## Learn More
+- Try to say:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+· Search for "the person name"
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+· Open messages or messages
 
-### Code Splitting
+· Goodbye
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+º other commands are coming soon 💪
 
-### Analyzing the Bundle Size
+# Messages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+MAKE SURE TO CLICK ON THE PROFILE BUTTON BEFORE CLICKING THE MESSAGING ICON AND USE IT
 
-### Making a Progressive Web App
+MAKE SURE YOU SEND A FRIEND REQUEST AND LOG AGAIN AND HOPE THAT THE OTHER USER ACCEPT'S IT SO YOU CAN SELECT HIM FROM THE FRIEND LIST AND CHAT WITH HIM
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+AT THE MOMENT YOU CAN SEE THE MESSAGE THAT YOU'VE SENT ONLY WHEN THE FRIEND REPLY 😅
 
-### Advanced Configuration
+# FACE-AUTH
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+ACCERTARSI DI ABILITARE FACE-AUT NELLA PAGINA DEL PROFILE
 
-### Deployment
+LOG AGAIN AND TEST IT 😉
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# LAST BUT NOT LEAST ... DON'T RELOAD THE PAGE. IF YOU DO?! LAST BUT NOT LEAST ... DON'T RELOAD THE PAGE. IF YOU DO?! A KRAKEN WILL SWALLOW YOUR COMPUTER AND YOU WILL BE PROJECTED TO ANOTHER PARALLEL DIMENSION.
 
-### `npm run build` fails to minify
+AT DAY ONE OF STRIVE SCHOOL I WAS KNOWING ONLY 3 OR MAX 5 TAGS OF HTML... AND CSS WAS OBSCURE TO ME...
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+WHAT A JOURNEY 🥵
+
+Thank you for behing here
+
+Peace ✌️
