@@ -28,9 +28,9 @@ OR
 
 - SWEET BUG'S HERE AND THERE (WORKING ON THEM AS YOU ARE READING THIS)
 
-## What to do and what not to have the best experience
+## What to do and what not,  to have the best experience
 
-#Arios
+# Arios
 
 - Don't ask Arios's personal life information 🤣 he may ignore you... and YES, he is engaged with Siri.
 
@@ -39,6 +39,8 @@ OR
 · Search for "the person name"
 
 · Open messages or messages
+
+· Open profile or profile
 
 · Goodbye
 
@@ -54,16 +56,19 @@ AT THE MOMENT YOU CAN SEE THE MESSAGE THAT YOU'VE SENT ONLY WHEN THE FRIEND REPL
 
 # FACE-AUTH
 
-ACCERTARSI DI ABILITARE FACE-AUT NELLA PAGINA DEL PROFILE
+MAKE SURE YOU ENABLE FACE-AUTH IN THE PROFILE PAGE
 
 LOG AGAIN AND TEST IT 😉
 
-# LAST BUT NOT LEAST ... DON'T RELOAD THE PAGE. IF YOU DO?! LAST BUT NOT LEAST ... DON'T RELOAD THE PAGE. IF YOU DO?! A KRAKEN WILL SWALLOW YOUR COMPUTER AND YOU WILL BE PROJECTED TO ANOTHER PARALLEL DIMENSION.
+## LAST BUT NOT LEAST,  DON'T RELOAD THE PAGE! IF YOU DO?! A KRAKEN WILL SWALLOW YOUR COMPUTER AND YOU WILL BE PROJECTED TO ANOTHER PARALLEL DIMENSION.
 
-AT DAY ONE OF STRIVE SCHOOL I WAS KNOWING ONLY 3 OR MAX 5 TAGS OF HTML... AND CSS WAS OBSCURE TO ME...
+
+## VERY HAPPY ABOUT WHAT I HAVE ACHIEVED SO FAR. THANK YOU STRIVE SCHOOL FOR ALL THIS 🤩
+
+Just remembering that I've started from zero at my day one at Strive School and day by day I've learnt HTML, CSS, JS and much more...
 
 WHAT A JOURNEY 🥵
 
-Thank you for behing here
-
+By the way visitor, 
+Thank you for being here.
 Peace ✌️
