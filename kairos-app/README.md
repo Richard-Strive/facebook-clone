@@ -65,7 +65,7 @@ LOG AGAIN AND TEST IT 😉
 
 ## VERY HAPPY ABOUT WHAT I HAVE ACHIEVED SO FAR. THANK YOU STRIVE SCHOOL FOR ALL THIS 🤩
 
-Just remembering that I've started from zero at my day on at Strive School and day by day I've learnt HTML, CSS, JS and much more...
+Just remembering that I've started from zero at my day one at Strive School and day by day I've learnt HTML, CSS, JS and much more...
 
 WHAT A JOURNEY 🥵
 
