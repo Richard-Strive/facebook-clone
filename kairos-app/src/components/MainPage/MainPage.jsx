@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
+
 import { Container, Row, Col } from "react-bootstrap";
 import LeftSideBar from "../subcomponents/LeftSideBar/LeftSideBar";
 import RightSideBar from "../subcomponents/RightSideBar/RightSideBar";
@@ -31,4 +33,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default withRouter(MainPage);

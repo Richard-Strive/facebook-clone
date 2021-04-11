@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./ProfilePage.css";
+import { withRouter } from "react-router-dom";
 
 import { MdPhotoCamera } from "react-icons/md";
 import { FaPen } from "react-icons/fa";
@@ -187,4 +188,4 @@ function ProfilePage({ socket }) {
   );
 }
 
-export default ProfilePage;
+export default withRouter(ProfilePage);

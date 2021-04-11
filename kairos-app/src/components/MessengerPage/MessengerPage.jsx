@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./MessengerPage.css";
+import { withRouter } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -183,4 +184,4 @@ function MessengerPage({ socket }) {
   );
 }
 
-export default MessengerPage;
+export default withRouter(MessengerPage);

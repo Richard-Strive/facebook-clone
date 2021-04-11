@@ -28,7 +28,6 @@ const connOpt = {
 const socket = io(url, { autoConnect: false }, connOpt);
 
 function App() {
-  const token = localStorage.getItem("accessToken");
   return (
     <>
       <Router>
@@ -46,24 +45,20 @@ function App() {
           <ProtectedRoute
             exact
             path="/home/main"
-            component={<MainPage />}
-            token={token}
-          />
-
-          <ProtectedRoute
-            exact
-            path="/home/vocal"
-            render={(props) => <VocalAssisten {...props} />}
+            component={MainPage}
+            socket={socket}
           />
           <ProtectedRoute
             exact
             path="/home/me"
-            render={(props) => <ProfilePage {...props} socket={socket} />}
+            component={ProfilePage}
+            socket={socket}
           />
           <ProtectedRoute
             exact
             path="/home/messages"
-            render={(props) => <MessengerPage {...props} socket={socket} />}
+            component={MessengerPage}
+            socket={socket}
           />
         </Switch>
       </Router>

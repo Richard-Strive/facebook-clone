@@ -1,12 +1,17 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-function ProtectedRoute({ component: Component, token, ...rest }) {
+function ProtectedRoute({ component: Component, socket: socket, ...rest }) {
+  const token = localStorage.getItem("accessToken");
   return (
     <Route
       {...rest}
       render={(props) =>
-        token ? <Component {...rest} /> : <Redirect to="/login" />
+        token !== null ? (
+          <Component {...rest} socket={socket} />
+        ) : (
+          <Redirect to="/login" />
+        )
       }
     />
   );
