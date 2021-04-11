@@ -30,7 +30,7 @@ OR
 
 ## What to do and what not,  to have the best experience
 
-#Arios
+# Arios
 
 - Don't ask Arios's personal life information 🤣 he may ignore you... and YES, he is engaged with Siri.
 
