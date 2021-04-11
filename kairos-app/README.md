@@ -70,5 +70,5 @@ Just remembering that I've started from zero at my day on at Strive School and d
 WHAT A JOURNEY 🥵
 
 By the way visitor, 
-Thank you for being here
+Thank you for being here.
 Peace ✌️
