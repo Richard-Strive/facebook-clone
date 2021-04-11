@@ -28,7 +28,7 @@ OR
 
 - SWEET BUG'S HERE AND THERE (WORKING ON THEM AS YOU ARE READING THIS)
 
-## What to do and what not to have the best experience
+## What to do and what not,  to have the best experience
 
 #Arios
 
