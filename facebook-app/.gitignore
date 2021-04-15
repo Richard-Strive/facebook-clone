@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# .env
+.env
+
 # non usefull folders/files
 /src/components/KairosRegEnv
 /src/components/KairosVerifyEnv
